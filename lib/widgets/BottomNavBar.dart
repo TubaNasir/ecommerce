@@ -1,4 +1,6 @@
 import 'package:ecommerce/model/BottomNavBar_model.dart';
+import 'package:ecommerce/screens/my_profile.dart';
+import 'package:ecommerce/screens/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/screens/home.dart';
 import 'package:ecommerce/screens/cart.dart';
@@ -14,8 +16,6 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color selectedColor = Colors.black;
-    Color unselectedColor = Colors.grey;
 
     return Positioned(
       bottom: 0,
@@ -76,12 +76,32 @@ class BottomNavBar extends StatelessWidget {
                   ),
                   Container(width: size.width * 0.20),
                   IconButton(
-                    icon: Icon(Icons.favorite),
-                    onPressed: () {},
+                    icon: Icon(Icons.favorite,
+                      color: context.watch<NavBar>().page.toString() == 'fav'
+                          ? Colors.black
+                          : Colors.grey,),
+                    onPressed: () {
+                      context.read<NavBar>().setPage('fav');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Wishlist(),
+                        ),
+                      );
+                    },
                   ),
                   IconButton(
-                    icon: Icon(Icons.person_outline_outlined),
-                    onPressed: () {},
+                    icon: Icon(Icons.person_outline_outlined,
+                      color: context.watch<NavBar>().page.toString() == 'profile'
+                          ? Colors.black
+                          : Colors.grey),
+                    onPressed: () {
+                      context.read<NavBar>().setPage('profile');
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MyProfile(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
