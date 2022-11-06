@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
       child: TextButton(
 
         style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
+          //foregroundColor: Colors.white,
           backgroundColor: Colors.white,
         ),
         onPressed: pressed,
