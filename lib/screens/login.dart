@@ -29,80 +29,114 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: [
                   SizedBox(height: 50),
-                  Text(
-                    "Welcome",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "Sign in with your email and password  \nor continue with social media",
-                    textAlign: TextAlign.center,
-                  ),
+                  WelcomeMessage(),
                   SizedBox(height: 50),
-                  Form(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: "Email",
-                            hintText: "Enter your email",
-                            // If  you are using latest version of flutter then lable text and hint text shown like this
-                            // if you r using flutter less then 1.20.* then maybe this is not working properly
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: SuffixIcon(icon: Icons.email),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: "Password",
-                            hintText: "Enter your password",
-                            // If  you are using latest version of flutter then lable text and hint text shown like this
-                            // if you r using flutter less then 1.20.* then maybe this is not working properly
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: SuffixIcon(icon: Icons.password),
-                          ),
-                        ),
-                        SizedBox(height: 40),
-                        CustomButton(
-                            text: "Continue",
-                            pressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => Home(),
-                                ),
-                              );
-                            }),
-                        SizedBox(height: 30),
-                        Text(
-                          "or signup with",
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 30),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SocialCard(icon: 'assets/icons/google-icon.svg', onPressed: () {},),
-                            SocialCard(icon: 'assets/icons/facebook-2.svg', onPressed: () {},),
-                            SocialCard(icon: 'assets/icons/twitter.svg', onPressed: () {},),
-
-                          ],
-                        ),
-                        SizedBox(height: 20)
-                      ],
-                    ),
-                  ),
-
+                  LoginForm(),
                   SizedBox(height: 20),
-                  InkWell(child: Text("Don't have an account? Signup.")),
+                  SignupRedirection(),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SignupRedirection extends StatelessWidget {
+  const SignupRedirection({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Don't have an account?"),
+        Text(" Signup.", style: TextStyle(color: PrimaryColor)),
+      ],
+    );
+  }
+}
+
+class WelcomeMessage extends StatelessWidget {
+  const WelcomeMessage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      "Welcome",
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
+
+class LoginForm extends StatelessWidget {
+  const LoginForm({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: "Email",
+              hintText: "Enter your email",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: SuffixIcon(icon: Icons.email),
+            ),
+          ),
+          SizedBox(height: 20),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: "Password",
+              hintText: "Enter your password",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: SuffixIcon(icon: Icons.password),
+            ),
+          ),
+          SizedBox(height: 40),
+          CustomButton(
+              text: "Continue",
+              pressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ),
+                );
+              }),
+          SizedBox(height: 30),
+          Text(
+            "or signup with",
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SocialCard(icon: 'assets/icons/google-icon.svg', onPressed: () {},),
+              SocialCard(icon: 'assets/icons/facebook-2.svg', onPressed: () {},),
+              SocialCard(icon: 'assets/icons/twitter.svg', onPressed: () {},),
+
+            ],
+          ),
+          SizedBox(height: 20)
+        ],
       ),
     );
   }

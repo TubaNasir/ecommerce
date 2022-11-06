@@ -1,3 +1,4 @@
+import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/model/BottomNavBar_model.dart';
 import 'package:ecommerce/screens/my_profile.dart';
 import 'package:ecommerce/screens/wishlist.dart';
@@ -33,8 +34,8 @@ class BottomNavBar extends StatelessWidget {
                 heightFactor: 0.6,
                 child: FloatingActionButton(
                     onPressed: () {},
-                    backgroundColor: Colors.amber,
-                    child: Icon(Icons.camera_alt_outlined, color: Colors.black,),
+                    backgroundColor: PrimaryColor,
+                    child: Icon(Icons.camera_alt_outlined, color: Colors.white,),
                     elevation: 0.1)),
             Container(
               width: size.width,
@@ -129,7 +130,7 @@ class BNBCustomPainter extends CustomPainter {
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();
-    canvas.drawShadow(path, Colors.black, 5, true);
+    canvas.drawShadow(path, Colors.black, 10, true);
     canvas.drawPath(path, paint);
   }
 
