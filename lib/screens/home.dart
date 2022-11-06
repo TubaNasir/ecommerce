@@ -29,7 +29,6 @@ class _HomeState extends State<Home> {
               widget: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
                     SearchBar(),
                     SizedBox(height: 20),
                     Heading(text: 'Categories'),
@@ -42,6 +41,26 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 20),
                     Heading(text: "Popular Products"),
                     SizedBox(height: 10),
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 140,
+                          child: AspectRatio(
+                            aspectRatio: 1.02,
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: SecondaryColor,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Image.network("https://uniworthdress.com/uploads/product/f4c7cb11d0c264e3f19fd465b948464e.jpg")
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

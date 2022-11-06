@@ -9,23 +9,42 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Container(
-        decoration: const BoxDecoration(
-          gradient: PrimaryGradientColor,
-        ),
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius:
-            BorderRadius.only(topLeft: Radius.circular(50.0)),
+      child: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 30,
+            decoration: const BoxDecoration(
+              gradient: PrimaryGradientColor,
+            ),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 30,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius:
+                BorderRadius.only(topLeft: Radius.circular(30.0)),
+              ),
+
+            ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: this.widget,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: this.widget,
+                    ),
+                  ),
+                  SizedBox(height:100)
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
