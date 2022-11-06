@@ -5,9 +5,10 @@ import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
-  const CustomAppBar({Key? key, required this.title}) : super(key: key);
+  const CustomAppBar({Key? key, required this.title, required this.backButton}) : super(key: key);
 
   final String title;
+  final bool backButton;
   @override
   Widget build(BuildContext context) {
     int numOfitem = 5;
@@ -22,10 +23,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              backButton ? InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.black,
+                ),
+              ) : Container(),
               Text(
                   title,
                 style: Theme.of(context).textTheme.headline1,
-                textAlign: TextAlign.justify,
+                textAlign: TextAlign.center,
               ),
           if (context.watch<NavBar>().page.toString() == 'home') InkWell(
             borderRadius: BorderRadius.circular(100),
