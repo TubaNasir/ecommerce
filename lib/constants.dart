@@ -7,7 +7,7 @@ const PrimaryGradientColor = LinearGradient(
   end: Alignment.bottomRight,
   colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
 );
-const SecondaryColor = Color(0xFF979797);
+const SecondaryColor = Color(0xFFECE7E7);
 const TextColor = Color(0xFF757575);
 
 const AnimationDuration = Duration(milliseconds: 200);
