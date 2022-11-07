@@ -8,7 +8,8 @@ const PrimaryGradientColor = LinearGradient(
   colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
 );
 const SecondaryColor = Color(0xFFECE7E7);
-const TextColor = Color(0xFF757575);
+const TextColor1 = Colors.black;
+const TextColor2 = Color(0xFF757575);
 
 const AnimationDuration = Duration(milliseconds: 200);
 
@@ -44,6 +45,6 @@ final otpInputDecoration = InputDecoration(
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: BorderSide(color: TextColor),
+    borderSide: BorderSide(color: TextColor2),
   );
 }

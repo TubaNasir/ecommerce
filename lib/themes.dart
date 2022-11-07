@@ -13,11 +13,10 @@ ThemeData theme() {
 
 TextTheme textTheme() {
   return TextTheme(
-      headline1: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
-      headline6: TextStyle(fontSize: 30.0, fontStyle: FontStyle.italic),
-
-    bodyText1: TextStyle(color: TextColor),
-    bodyText2: TextStyle(color: TextColor),
+      headlineSmall: TextStyle(color: TextColor1, fontSize: 24, fontWeight: FontWeight.bold),
+      titleMedium: TextStyle(color: TextColor1),//for price for now
+      bodySmall: TextStyle(color: TextColor2),
+      bodyLarge: TextStyle(color: TextColor2),
   );
 }
 
@@ -34,7 +33,7 @@ TextTheme textTheme() {
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(28),
-    borderSide: BorderSide(color: TextColor),
+    borderSide: BorderSide(color: TextColor2),
     gapPadding: 10,
   );
   return InputDecorationTheme(

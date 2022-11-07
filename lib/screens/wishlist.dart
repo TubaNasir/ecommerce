@@ -19,7 +19,7 @@ class _WishlistState extends State<Wishlist> {
       body: Stack(
         children: [
           Align(alignment: Alignment.topCenter, child: Text('wishlist')),
-          BottomNavBar(size: size),
+          BottomNavBar(),
         ],
       ),
     );

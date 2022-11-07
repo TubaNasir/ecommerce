@@ -17,7 +17,7 @@ class _CartState extends State<Cart> {
       body: Stack(
         children: [
           Align(alignment: Alignment.topCenter, child: Text('cart')),
-          BottomNavBar(size: size),
+          BottomNavBar(),
         ],
       ),
     );

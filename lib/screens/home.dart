@@ -1,9 +1,11 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/model/product_model.dart';
 import 'package:ecommerce/screens/search.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/BottomNavBar.dart';
 import 'package:ecommerce/model/BottomNavBar_model.dart';
+import 'package:ecommerce/widgets/product.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce/components/layout.dart';
@@ -18,7 +20,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -41,37 +42,56 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 20),
                     Heading(text: "Popular Products"),
                     SizedBox(height: 10),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 140,
-                          child: AspectRatio(
-                            aspectRatio: 1.02,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: SecondaryColor,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Image.network("https://uniworthdress.com/uploads/product/f4c7cb11d0c264e3f19fd465b948464e.jpg")
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    PopularProducts(),
+                    SizedBox(height: 20),
+                    Heading(text: "New Arrivals"),
+                    SizedBox(height: 10),
+                GridView.count(
+                    shrinkWrap: true,
+                    primary: false,
+                  crossAxisCount: 2,
+                children: List.generate(demoProducts.length, (index){return ProductCard(product: demoProducts[index]);}))
                   ],
                 ),
               ),
             ),
-            BottomNavBar(size: size),
+            BottomNavBar(),
           ],
         ),
       ),
     );
   }
 }
+
+class PopularProducts extends StatelessWidget {
+  const PopularProducts({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            height: 240,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: demoProducts.map((product) =>
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0),
+                    child: ProductCard(product: product),
+                  ))
+                  .toList(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
 
 class Heading extends StatelessWidget {
   const Heading({
@@ -85,7 +105,7 @@ class Heading extends StatelessWidget {
       children: [
         Text(
           text,
-          style: Theme.of(context).textTheme.headline1,
+          style: Theme.of(context).textTheme.headlineSmall,
           textAlign: TextAlign.start,
         ),
       ],

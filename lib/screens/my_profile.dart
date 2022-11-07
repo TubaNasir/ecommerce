@@ -19,7 +19,7 @@ class _MyProfileState extends State<MyProfile> {
       body: Stack(
         children: [
           Align(alignment: Alignment.topCenter, child: Text('my profile')),
-          BottomNavBar(size: size),
+          BottomNavBar(),
         ],
       ),
     );

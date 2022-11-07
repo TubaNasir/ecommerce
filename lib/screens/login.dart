@@ -157,7 +157,7 @@ class SocialCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: Container(
           decoration: BoxDecoration(
-            color: TextColor,
+            color: TextColor2,
             shape: BoxShape.circle,
           ),
             child: SvgPicture.asset(icon)

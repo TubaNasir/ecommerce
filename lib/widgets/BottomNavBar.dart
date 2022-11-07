@@ -10,13 +10,10 @@ import 'package:provider/provider.dart';
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({
     Key? key,
-    required this.size,
   }) : super(key: key);
-
-  final Size size;
-
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
 
     return Positioned(
       bottom: 0,

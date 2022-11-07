@@ -11,37 +11,20 @@ class Layout extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 30,
-            decoration: const BoxDecoration(
-              gradient: PrimaryGradientColor,
-            ),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 30,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius:
-                BorderRadius.only(topLeft: Radius.circular(30.0)),
-              ),
 
-            ),
-          ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-
-                  Container(
+            child: Column(
+              children: [
+                Container(
+                  child: Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: this.widget,
                     ),
                   ),
-                  SizedBox(height:100)
-                ],
-              ),
+                ),
+                SizedBox(height:100)
+              ],
             ),
           ),
         ],
