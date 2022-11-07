@@ -4,7 +4,7 @@ import 'package:ecommerce/constants.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
-    this.text,
+    required this.text,
     required this.pressed,
   }) : super(key: key);
   final String? text;
@@ -16,9 +16,7 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 70,
       child: TextButton(
-
         style: TextButton.styleFrom(
-          //foregroundColor: Colors.white,
           backgroundColor: Colors.white,
         ),
         onPressed: pressed,
@@ -34,6 +32,7 @@ class CustomButton extends StatelessWidget {
             child: Text(
               text!,
               textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
         ),
@@ -41,4 +40,3 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
-

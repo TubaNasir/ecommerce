@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/components/suffix_icon.dart';
 import 'package:ecommerce/components/button.dart';
@@ -55,7 +56,13 @@ class SignupRedirection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text("Don't have an account?"),
-        Text(" Signup.", style: TextStyle(color: PrimaryColor)),
+        InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SignUp()),
+              );
+            },
+            child: Text(" Signup.", style: TextStyle(color: PrimaryColor))),
       ],
     );
   }
@@ -127,10 +134,18 @@ class LoginForm extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SocialCard(icon: 'assets/icons/google-icon.svg', onPressed: () {},),
-              SocialCard(icon: 'assets/icons/facebook-2.svg', onPressed: () {},),
-              SocialCard(icon: 'assets/icons/twitter.svg', onPressed: () {},),
-
+              SocialCard(
+                icon: 'assets/icons/google-icon.svg',
+                onPressed: () {},
+              ),
+              SocialCard(
+                icon: 'assets/icons/facebook-2.svg',
+                onPressed: () {},
+              ),
+              SocialCard(
+                icon: 'assets/icons/twitter.svg',
+                onPressed: () {},
+              ),
             ],
           ),
           SizedBox(height: 20)
@@ -141,11 +156,8 @@ class LoginForm extends StatelessWidget {
 }
 
 class SocialCard extends StatelessWidget {
-   SocialCard({
-    Key? key,
-    required this.icon,
-    required this.onPressed
-  }) : super(key: key);
+  SocialCard({Key? key, required this.icon, required this.onPressed})
+      : super(key: key);
 
   final String icon;
   VoidCallback onPressed;
@@ -156,12 +168,15 @@ class SocialCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: Container(
-          decoration: BoxDecoration(
-            color: TextColor2,
-            shape: BoxShape.circle,
-          ),
-            child: SvgPicture.asset(icon)
-        ),
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.all(12),
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: SecondaryColor,
+              shape: BoxShape.circle,
+            ),
+            child: Container(child: SvgPicture.asset(icon))),
       ),
       onTap: onPressed,
     );
