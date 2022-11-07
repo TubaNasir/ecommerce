@@ -18,7 +18,23 @@ class _MyProfileState extends State<MyProfile> {
       backgroundColor: Colors.grey.shade200,
       body: Stack(
         children: [
-          Align(alignment: Alignment.topCenter, child: Text('my profile')),
+          Align(alignment: Alignment.topCenter,
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: PrimaryGradientColor,
+              ),
+              child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(50.0)),
+                  ),
+                  child: AccountBody(),
+              ),
+            ),
+          ),
+          //AccountBody(),
           BottomNavBar(),
         ],
       ),
