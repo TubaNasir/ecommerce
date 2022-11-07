@@ -2,18 +2,16 @@ import 'package:ecommerce/components/button.dart';
 import 'package:ecommerce/components/suffix_icon.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/screens/login.dart';
-import 'package:ecommerce/screens/complete_profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class CompleteProfile extends StatefulWidget {
+  const CompleteProfile({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<CompleteProfile> createState() => _CompleteProfileState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _CompleteProfileState extends State<CompleteProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +23,10 @@ class _SignUpState extends State<SignUp> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  SizedBox(height: 80),
+                  CompleteProfileMessage(),
                   SizedBox(height: 40),
-                  RegisterMessage(),
-                  SizedBox(height: 40),
-                  SignUpForm(),
+                  ProfileForm(),
                   SizedBox(height: 20),
                   SignupRedirection(),
                 ],
@@ -64,15 +62,15 @@ class SignupRedirection extends StatelessWidget {
   }
 }
 
-class RegisterMessage extends StatelessWidget {
-  const RegisterMessage({
+class CompleteProfileMessage extends StatelessWidget {
+  const CompleteProfileMessage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Text(
-      "Register Account",
+      "Complete Profile",
       style: TextStyle(
         color: Colors.black,
         fontSize: 28,
@@ -82,8 +80,8 @@ class RegisterMessage extends StatelessWidget {
   }
 }
 
-class SignUpForm extends StatelessWidget {
-  const SignUpForm({
+class ProfileForm extends StatelessWidget {
+  const ProfileForm({
     Key? key,
   }) : super(key: key);
 
@@ -93,106 +91,48 @@ class SignUpForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
+              labelText: "First Name",
+              hintText: "Enter your first name",
               // If  you are using latest version of flutter then lable text and hint text shown like this
               // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.email),
+              suffixIcon: SuffixIcon(icon: Icons.account_circle),
             ),
           ),
           SizedBox(height: 20),
           TextFormField(
-            obscureText: true,
             decoration: InputDecoration(
-              labelText: "Password",
-              hintText: "Enter your password",
+              labelText: "Last Name",
+              hintText: "Enter your last name",
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.lock),
+              suffixIcon: SuffixIcon(icon: Icons.account_circle),
             ),
           ),
           SizedBox(height: 20),
           TextFormField(
-            obscureText: true,
             decoration: InputDecoration(
-              labelText: "Confirm Password",
-              hintText: "Re-type password",
+              labelText: "Contact Number",
+              hintText: "Enter your contact number",
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.lock),
+              suffixIcon: SuffixIcon(icon: Icons.phone),
             ),
           ),
           SizedBox(height: 30),
           CustomButton(
-              text: "Continue",
+              text: "Sign Up",
               pressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => CompleteProfile(),
                   ),
                 );
-              }),
-          SizedBox(height: 10),
-          Text(
-            'By continuing, you confirm that you agree \nwith our Terms and Conditions',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.caption,
-          ),
-          SizedBox(height: 30),
-          Text(
-            "or signin with",
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocialCard(
-                icon: 'assets/icons/google-icon.svg',
-                onPressed: () {},
+              }
               ),
-              SocialCard(
-                icon: 'assets/icons/facebook-2.svg',
-                onPressed: () {},
-              ),
-              SocialCard(
-                icon: 'assets/icons/twitter.svg',
-                onPressed: () {},
-              ),
-            ],
-          ),
-          SizedBox(height: 20)
         ],
       ),
     );
   }
 }
 
-class SocialCard extends StatelessWidget {
-  SocialCard({Key? key, required this.icon, required this.onPressed})
-      : super(key: key);
 
-  final String icon;
-  VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            padding: EdgeInsets.all(12),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              color: SecondaryColor,
-              shape: BoxShape.circle,
-            ),
-            child: Container(child: SvgPicture.asset(icon))),
-      ),
-      onTap: onPressed,
-    );
-  }
-}
