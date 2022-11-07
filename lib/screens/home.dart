@@ -46,11 +46,14 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 20),
                     Heading(text: "New Arrivals"),
                     SizedBox(height: 10),
-                GridView.count(
-                    shrinkWrap: true,
-                    primary: false,
-                  crossAxisCount: 2,
-                children: List.generate(demoProducts.length, (index){return ProductCard(product: demoProducts[index]);}))
+                    GridView.count(
+                      shrinkWrap: true,
+                      primary: false,
+                      crossAxisCount: 2,
+                      children: List.generate(demoProducts.length, (index) {
+                        return ProductCard(product: demoProducts[index]);
+                      }),
+                    ),
                   ],
                 ),
               ),
@@ -77,11 +80,11 @@ class PopularProducts extends StatelessWidget {
             height: 240,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: demoProducts.map((product) =>
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
-                    child: ProductCard(product: product),
-                  ))
+              children: demoProducts
+                  .map((product) => Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: ProductCard(product: product),
+                      ))
                   .toList(),
             ),
           ),
@@ -91,11 +94,10 @@ class PopularProducts extends StatelessWidget {
   }
 }
 
-
-
 class Heading extends StatelessWidget {
   const Heading({
-    Key? key, required this.text,
+    Key? key,
+    required this.text,
   }) : super(key: key);
 
   final String text;
