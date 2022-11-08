@@ -1,11 +1,8 @@
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/screens/login.dart';
-import 'package:ecommerce/screens/search.dart';
+import 'package:ecommerce/search/search.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/widgets/BottomNavBar.dart';
-import 'package:ecommerce/model/BottomNavBar_model.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerce/screens/home.dart';
 import 'package:ecommerce/themes.dart';
 
 void main() {

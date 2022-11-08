@@ -1,7 +1,7 @@
-import 'package:ecommerce/components/button.dart';
-import 'package:ecommerce/components/suffix_icon.dart';
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/screens/login.dart';
+import 'package:ecommerce/login/login.dart';
+import 'package:ecommerce/widgets/button.dart';
+import 'package:ecommerce/widgets/suffix_icon.dart';
 import 'package:flutter/material.dart';
 
 class CompleteProfile extends StatefulWidget {

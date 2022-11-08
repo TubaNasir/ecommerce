@@ -1,10 +1,10 @@
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/model/BottomNavBar_model.dart';
-import 'package:ecommerce/screens/my_profile.dart';
-import 'package:ecommerce/screens/wishlist.dart';
+import 'package:ecommerce/my_profile/my_profile.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
+import 'package:ecommerce/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/screens/home.dart';
-import 'package:ecommerce/screens/cart.dart';
+import 'package:ecommerce/home/home.dart';
+import 'package:ecommerce/cart/cart.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatelessWidget {

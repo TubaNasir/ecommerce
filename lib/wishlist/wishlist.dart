@@ -1,6 +1,5 @@
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/widgets/BottomNavBar.dart';
-import 'package:ecommerce/model/BottomNavBar_model.dart';
 import 'package:provider/provider.dart';
 
 class Wishlist extends StatefulWidget {

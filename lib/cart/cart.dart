@@ -1,4 +1,4 @@
-import 'package:ecommerce/widgets/BottomNavBar.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends StatefulWidget {

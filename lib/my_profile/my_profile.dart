@@ -1,11 +1,10 @@
-import 'package:ecommerce/screens/account/edit_profile.dart';
+import 'package:ecommerce/my_profile/edit_profile.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/widgets/BottomNavBar.dart';
-import 'package:ecommerce/model/BottomNavBar_model.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../components/layout.dart';
+import '../widgets/layout.dart';
 import '../constants.dart';
 
 class MyProfile extends StatefulWidget {

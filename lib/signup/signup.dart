@@ -1,23 +1,19 @@
+import 'package:ecommerce/complete_profile/complete_profile.dart';
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/screens/signup.dart';
+import 'package:ecommerce/login/login.dart';
+import 'package:ecommerce/widgets/button.dart';
+import 'package:ecommerce/widgets/suffix_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/components/suffix_icon.dart';
-import 'package:ecommerce/components/button.dart';
-import 'package:ecommerce/screens/home.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
-  final _formKey = GlobalKey<FormState>();
-  String? email;
-  String? password;
-
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +25,10 @@ class _LoginState extends State<Login> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 50),
-                  WelcomeMessage(),
-                  SizedBox(height: 50),
-                  LoginForm(),
+                  SizedBox(height: 40),
+                  RegisterMessage(),
+                  SizedBox(height: 40),
+                  SignUpForm(),
                   SizedBox(height: 20),
                   SignupRedirection(),
                 ],
@@ -55,28 +51,28 @@ class SignupRedirection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Don't have an account?"),
+        Text("Already have an account?"),
         InkWell(
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SignUp()),
+                MaterialPageRoute(builder: (context) => Login()),
               );
             },
-            child: Text(" Signup.", style: TextStyle(color: PrimaryColor))),
+            child: Text(" Login.", style: TextStyle(color: PrimaryColor))),
       ],
     );
   }
 }
 
-class WelcomeMessage extends StatelessWidget {
-  const WelcomeMessage({
+class RegisterMessage extends StatelessWidget {
+  const RegisterMessage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Text(
-      "Welcome",
+      "Register Account",
       style: TextStyle(
         color: Colors.black,
         fontSize: 28,
@@ -86,8 +82,8 @@ class WelcomeMessage extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
+class SignUpForm extends StatelessWidget {
+  const SignUpForm({
     Key? key,
   }) : super(key: key);
 
@@ -97,6 +93,7 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: "Email",
               hintText: "Enter your email",
@@ -108,26 +105,43 @@ class LoginForm extends StatelessWidget {
           ),
           SizedBox(height: 20),
           TextFormField(
+            obscureText: true,
             decoration: InputDecoration(
               labelText: "Password",
               hintText: "Enter your password",
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.password),
+              suffixIcon: SuffixIcon(icon: Icons.lock),
             ),
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 20),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: "Confirm Password",
+              hintText: "Re-type password",
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: SuffixIcon(icon: Icons.lock),
+            ),
+          ),
+          SizedBox(height: 30),
           CustomButton(
               text: "Continue",
               pressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Home(),
+                    builder: (context) => CompleteProfile(),
                   ),
                 );
               }),
+          SizedBox(height: 10),
+          Text(
+            'By continuing, you confirm that you agree \nwith our Terms and Conditions',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.caption,
+          ),
           SizedBox(height: 30),
           Text(
-            "or signup with",
+            "or signin with",
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 30),
