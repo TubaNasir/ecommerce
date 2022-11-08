@@ -14,7 +14,8 @@ ThemeData theme() {
 TextTheme textTheme() {
   return TextTheme(
       headlineSmall: TextStyle(color: TextColor1, fontSize: 24, fontWeight: FontWeight.bold),
-      titleMedium: TextStyle(color: TextColor1),//for price for now
+      titleMedium: TextStyle(color: TextColor1),//
+      bodyMedium: TextStyle(color: TextColor1),//for price for now// for price for now
       bodySmall: TextStyle(color: TextColor2),
       bodyLarge: TextStyle(color: TextColor2),
   );

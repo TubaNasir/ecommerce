@@ -1,4 +1,3 @@
-import 'package:ecommerce/screens/my_profile.dart';
 import 'package:ecommerce/widgets/button.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:ecommerce/widgets/suffix_icon.dart';
