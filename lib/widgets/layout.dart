@@ -11,7 +11,6 @@ class Layout extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Column(
         children: [
-
           Expanded(
             child: Column(
               children: [

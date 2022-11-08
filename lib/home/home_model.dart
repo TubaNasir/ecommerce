@@ -5,13 +5,11 @@ class Product {
   final String title, description;
   final String image;
   final int price;
-  final bool isFavourite;
   final int storeID;
 
   Product({
     required this.id,
     required this.image,
-    this.isFavourite = false,
     required this.title,
     required this.price,
     required this.description,
@@ -28,7 +26,6 @@ List<Product> demoProducts = [
     title: "Wireless Controller for PS4™",
     price: 1000,
     description: "This is a red shirt. Material is agdjd",
-    isFavourite: true,
     storeID: 1,
   ),
   Product(
@@ -37,7 +34,6 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true,
       storeID: 1,
   ),
   Product(
@@ -46,7 +42,6 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true,
       storeID: 2,
   ),
   Product(
@@ -55,7 +50,6 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true,
       storeID: 2,
   ),
 ];
