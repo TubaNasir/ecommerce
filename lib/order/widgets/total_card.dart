@@ -1,14 +1,15 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/order/order_model.dart';
 import 'package:flutter/material.dart';
 
-class ProductsCard extends StatefulWidget {
-  const ProductsCard({Key? key}) : super(key: key);
+class TotalCard extends StatefulWidget {
+  const TotalCard({Key? key}) : super(key: key);
 
   @override
-  State<ProductsCard> createState() => _ProductsCardState();
+  State<TotalCard> createState() => _TotalCardState();
 }
 
-class _ProductsCardState extends State<ProductsCard> {
+class _TotalCardState extends State<TotalCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,19 +32,19 @@ class _ProductsCardState extends State<ProductsCard> {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Products: ',
+                      'Total: ',
                       style: Theme.of(context).textTheme.titleMedium,
                       textAlign: TextAlign.left,
                     ),
+                    Text(
+                      'Rs. ${order.total}',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ],
                 ),
-                const Divider(
-                  color: SecondaryColor,
-                ),
-
               ],
             ),
           ),
