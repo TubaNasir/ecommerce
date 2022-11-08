@@ -6,6 +6,7 @@ class Product {
   final String image;
   final int price;
   final bool isFavourite;
+  final int storeID;
 
   Product({
     required this.id,
@@ -14,6 +15,7 @@ class Product {
     required this.title,
     required this.price,
     required this.description,
+    required this.storeID,
   });
 }
 
@@ -26,7 +28,8 @@ List<Product> demoProducts = [
     title: "Wireless Controller for PS4™",
     price: 1000,
     description: "This is a red shirt. Material is agdjd",
-    isFavourite: true
+    isFavourite: true,
+    storeID: 1,
   ),
   Product(
       id: 2,
@@ -34,7 +37,8 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true
+      isFavourite: true,
+      storeID: 1,
   ),
   Product(
       id: 3,
@@ -42,7 +46,8 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true
+      isFavourite: true,
+      storeID: 2,
   ),
   Product(
       id: 4,
@@ -50,9 +55,8 @@ List<Product> demoProducts = [
       title: "Wireless Controller for PS4™",
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
-      isFavourite: true
+      isFavourite: true,
+      storeID: 2,
   ),
 ];
 
-const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";

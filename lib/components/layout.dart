@@ -23,7 +23,6 @@ class Layout extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height:100)
               ],
             ),
           ),

@@ -1,6 +1,6 @@
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/screens/account/my_orders.dart';
 import 'package:ecommerce/screens/login.dart';
+import 'package:ecommerce/screens/search.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/BottomNavBar.dart';
 import 'package:ecommerce/model/BottomNavBar_model.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home: const Home(),
+      home: const Search(),
     );
   }
 }
