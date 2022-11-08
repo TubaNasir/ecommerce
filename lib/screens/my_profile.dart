@@ -1,4 +1,5 @@
 import 'package:ecommerce/screens/account/edit_profile.dart';
+import 'package:ecommerce/screens/account/my_orders.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/BottomNavBar.dart';
@@ -26,7 +27,6 @@ class _MyProfileState extends State<MyProfile> {
       body: Stack(
         children: [
           Layout(widget: AccountBody()),
-          //AccountBody(),
           BottomNavBar(),
         ],
       ),
@@ -62,7 +62,13 @@ class AccountBody extends StatelessWidget {
             icon: Icon(Icons.square_rounded, color: PrimaryColor),
             text: "My Orders",
             iconRight: Icon(Icons.chevron_right, color: PrimaryColor),
-            press: () {}
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MyOrders(),
+                ),
+              );
+            }
         ),
         ProfileMenu(
             icon: Icon(Icons.mic, color: PrimaryColor),
