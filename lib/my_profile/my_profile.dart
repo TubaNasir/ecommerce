@@ -1,4 +1,5 @@
 import 'package:ecommerce/my_profile/edit_profile.dart';
+import 'package:ecommerce/order/order.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
@@ -61,7 +62,13 @@ class AccountBody extends StatelessWidget {
             icon: Icon(Icons.square_rounded, color: PrimaryColor),
             text: "My Orders",
             iconRight: Icon(Icons.chevron_right, color: PrimaryColor),
-            press: () {}
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MyOrders(),
+                ),
+              );
+            }
         ),
         ProfileMenu(
             icon: Icon(Icons.mic, color: PrimaryColor),

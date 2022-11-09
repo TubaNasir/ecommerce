@@ -50,11 +50,17 @@ class _HomeState extends State<Home> {
                       shrinkWrap: true,
                       primary: false,
                       crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: MediaQuery.of(context).size.width /
+                          (MediaQuery.of(context).size.height/1.5),
                       children: List.generate(demoProducts.length, (index) {
-                        return ProductCard(product: demoProducts[index]);
+                        return Container(height: 150,child: ProductCard(product: demoProducts[index]));
                       }),
                     ),
-                    SizedBox(height:100)
+                    SizedBox(height:100),
+
+
 
                   ],
                 ),

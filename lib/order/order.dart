@@ -1,4 +1,5 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/order/order_details.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/horizontal_card.dart';
@@ -22,7 +23,13 @@ class MyOrders extends StatelessWidget {
             id.toString(),
             cardSubtitle: e.placedOn.toString() + '\n' + e.status,
             icon: Icon(Icons.chevron_right, color: PrimaryColor,),
-            press: () {},
+            press: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => OrderDetails(),
+                ),
+              );
+            },
           ))
               .toList()),
     );
