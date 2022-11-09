@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: 6.0.4
+  auto_size_text: ^3.0.0
 
 
 
