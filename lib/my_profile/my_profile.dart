@@ -75,6 +75,7 @@ class AccountBody extends StatelessWidget {
             iconRight: Icon(Icons.chevron_right, color: PrimaryColor),  //HAVE TO IMPLEMENT TOGGLE FUNCTIONALITY LATER
             press: () {}
         ),
+        SizedBox(height: 100,)
       ],
     );
   }
