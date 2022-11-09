@@ -2,6 +2,7 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home.dart';
 import 'package:ecommerce/order/order_details.dart';
 import 'package:ecommerce/search/search.dart';
+import 'package:ecommerce/success/success.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home: const OrderDetails(),
+      home: const Success(),
     );
   }
 }
