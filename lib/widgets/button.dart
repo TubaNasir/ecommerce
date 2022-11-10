@@ -32,7 +32,7 @@ class CustomButton extends StatelessWidget {
             child: Text(
               text!,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
             ),
           ),
         ),

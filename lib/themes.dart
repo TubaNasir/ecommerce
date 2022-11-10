@@ -37,6 +37,7 @@ InputDecorationTheme inputDecorationTheme() {
     borderSide: BorderSide(color: TextColor2),
     gapPadding: 10,
   );
+
   return InputDecorationTheme(
     //floatingLabelBehavior: FloatingLabelBehavior.always,
     contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),

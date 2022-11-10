@@ -1,8 +1,8 @@
 import 'package:ecommerce/widgets/customAppBar.dart';
+import 'package:ecommerce/widgets/suffix_icon.dart';
+import 'package:ecommerce/widgets/form_field.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/form_field.dart';
 import '../widgets/button.dart';
-import '../widgets/suffix_icon.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({Key? key}) : super(key: key);
