@@ -58,16 +58,9 @@ class _EditProfileFormState extends State<EditProfileForm> {
         ),
         SizedBox(height: 20,),
         CustomFormField(
-          labelText: "Phone Number",
-          hintText: "your phone number",
+          labelText: "Contact Number",
+          hintText: "your contact number",
           icon: SuffixIcon(icon: Icons.phone_android),
-          enabled: enabled,
-        ),
-        SizedBox(height: 20,),
-        CustomFormField(
-          labelText: "Gender",
-          hintText: "your gender",
-          icon: SuffixIcon(icon: Icons.person),
           enabled: enabled,
         ),
         SizedBox(height: 20,),

@@ -4,6 +4,8 @@ import 'package:ecommerce/widgets/button.dart';
 import 'package:ecommerce/widgets/suffix_icon.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/form_field.dart';
+
 class CompleteProfile extends StatefulWidget {
   const CompleteProfile({Key? key}) : super(key: key);
 
@@ -80,57 +82,54 @@ class CompleteProfileMessage extends StatelessWidget {
   }
 }
 
-class ProfileForm extends StatelessWidget {
+class ProfileForm extends StatefulWidget {
   const ProfileForm({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<ProfileForm> createState() => _ProfileFormState();
+}
+
+bool enabled = true;
+
+class _ProfileFormState extends State<ProfileForm> {
+  @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "First Name",
-              hintText: "Enter your first name",
-              // If  you are using latest version of flutter then lable text and hint text shown like this
-              // if you r using flutter less then 1.20.* then maybe this is not working properly
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.account_circle),
-            ),
-          ),
-          SizedBox(height: 20),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Last Name",
-              hintText: "Enter your last name",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.account_circle),
-            ),
-          ),
-          SizedBox(height: 20),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Contact Number",
-              hintText: "Enter your contact number",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.phone),
-            ),
-          ),
-          SizedBox(height: 30),
-          CustomButton(
-              text: "Sign Up",
-              pressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CompleteProfile(),
-                  ),
-                );
-              }
-              ),
-        ],
-      ),
+    return Column(
+      children: [
+        SizedBox(height: 20,),
+        CustomFormField(
+          labelText: "First Name",
+          hintText: "Enter your first name",
+          icon: SuffixIcon(icon: Icons.person),
+          enabled: enabled,
+        ),
+        SizedBox(height: 20,),
+        CustomFormField(
+          labelText: "Last Name",
+          hintText: "Enter your last name",
+          icon: SuffixIcon(icon: Icons.person),
+          enabled: enabled,
+        ),
+        SizedBox(height: 20,),
+        CustomFormField(
+          labelText: "Contact Number",
+          hintText: "Enter your contact number",
+          icon: SuffixIcon(icon: Icons.phone_android),
+          enabled: enabled,
+        ),
+        SizedBox(height: 20,),
+        CustomButton(
+            text: "Sign Up",
+            pressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Login(),
+                ),
+              );
+            }),
+      ],
     );
   }
 }

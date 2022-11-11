@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce/home/home.dart';
 
+import '../widgets/form_field.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -86,36 +88,39 @@ class WelcomeMessage extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+
+  bool enabled = true;
+  @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
-              // If  you are using latest version of flutter then lable text and hint text shown like this
-              // if you r using flutter less then 1.20.* then maybe this is not working properly
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.email),
-            ),
+          CustomFormField(
+            labelText: "Email",
+            hintText: "Enter your email",
+            icon: SuffixIcon(icon: Icons.email),
+            enabled: enabled,
           ),
-          SizedBox(height: 20),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Password",
-              hintText: "Enter your password",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.password),
-            ),
+          SizedBox(
+            height: 20,
           ),
-          SizedBox(height: 40),
+          CustomFormField(
+            labelText: "Password",
+            hintText: "Enter your password",
+            icon: SuffixIcon(icon: Icons.person),
+            enabled: enabled,
+          ),
+          SizedBox(height: 30),
           CustomButton(
               text: "Continue",
               pressed: () {
@@ -124,8 +129,8 @@ class LoginForm extends StatelessWidget {
                     builder: (context) => Home(),
                   ),
                 );
+                //state mgmt set enabled to tru; if enabled = true, button = save changes
               }),
-          SizedBox(height: 30),
           Text(
             "or signup with",
             textAlign: TextAlign.center,

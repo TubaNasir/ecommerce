@@ -6,6 +6,8 @@ import 'package:ecommerce/widgets/suffix_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widgets/form_field.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -27,10 +29,12 @@ class _SignUpState extends State<SignUp> {
                 children: [
                   SizedBox(height: 40),
                   RegisterMessage(),
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   SignUpForm(),
                   SizedBox(height: 20),
                   SignupRedirection(),
+                  SizedBox(height: 20),
+
                 ],
               ),
             ),
@@ -82,48 +86,54 @@ class RegisterMessage extends StatelessWidget {
   }
 }
 
-class SignUpForm extends StatelessWidget {
+class SignUpForm extends StatefulWidget {
   const SignUpForm({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<SignUpForm> createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  bool enabled = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Form(
+    return Padding(
+      padding: const EdgeInsets.all(13.0),
       child: Column(
         children: [
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: "Email",
-              hintText: "Enter your email",
-              // If  you are using latest version of flutter then lable text and hint text shown like this
-              // if you r using flutter less then 1.20.* then maybe this is not working properly
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.email),
-            ),
+          SizedBox(
+            height: 20,
           ),
-          SizedBox(height: 20),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: "Password",
-              hintText: "Enter your password",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.lock),
-            ),
+          CustomFormField(
+            labelText: "Email",
+            hintText: "Enter your email",
+            icon: SuffixIcon(icon: Icons.email),
+            enabled: enabled,
           ),
-          SizedBox(height: 20),
-          TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: "Confirm Password",
-              hintText: "Re-type password",
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: SuffixIcon(icon: Icons.lock),
-            ),
+          SizedBox(
+            height: 20,
           ),
-          SizedBox(height: 30),
+          CustomFormField(
+            labelText: "Password",
+            hintText: "Enter your password",
+            icon: SuffixIcon(icon: Icons.person),
+            enabled: enabled,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          CustomFormField(
+            labelText: "Confirm Password",
+            hintText: "Re-enter password",
+            icon: SuffixIcon(icon: Icons.person),
+            enabled: enabled,
+          ),
+          SizedBox(
+            height: 30,
+          ),
           CustomButton(
               text: "Continue",
               pressed: () {
@@ -145,24 +155,20 @@ class SignUpForm extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocialCard(
-                icon: 'assets/icons/google-icon.svg',
-                onPressed: () {},
-              ),
-              SocialCard(
-                icon: 'assets/icons/facebook-2.svg',
-                onPressed: () {},
-              ),
-              SocialCard(
-                icon: 'assets/icons/twitter.svg',
-                onPressed: () {},
-              ),
-            ],
-          ),
-          SizedBox(height: 20)
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SocialCard(
+              icon: 'assets/icons/google-icon.svg',
+              onPressed: () {},
+            ),
+            SocialCard(
+              icon: 'assets/icons/facebook-2.svg',
+              onPressed: () {},
+            ),
+            SocialCard(
+              icon: 'assets/icons/twitter.svg',
+              onPressed: () {},
+            ),
+          ]),
         ],
       ),
     );
