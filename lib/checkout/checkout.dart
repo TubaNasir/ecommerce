@@ -1,4 +1,6 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/success/success.dart';
+import 'package:ecommerce/widgets/button.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:ecommerce/widgets/layout.dart';
 import 'package:ecommerce/widgets/suffix_icon.dart';
@@ -9,93 +11,519 @@ class Checkout extends StatefulWidget {
 
   @override
   State<Checkout> createState() => _CheckoutState();
-
 }
 
-
 class _CheckoutState extends State<Checkout> {
-
-  List<String> _locations = ['A', 'B', 'C', 'D']; // Option 2
-  String _selectedLocation = '';
   // Initial Selected Value
-  String dropdownvalue = 'Item 1';
+  String dropdownvalue = 'Karachi';
 
   // List of items in our dropdown menu
   var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
+    "Islamabad",
+    "Ahmed Nager",
+    "Ahmadpur East",
+    "Ali Khan",
+    "Alipur",
+    "Arifwala",
+    "Attock",
+    "Bhera",
+    "Bhalwal",
+    "Bahawalnagar",
+    "Bahawalpur",
+    "Bhakkar",
+    "Burewala",
+    "Chillianwala",
+    "Chakwal",
+    "Chichawatni",
+    "Chiniot",
+    "Chishtian",
+    "Daska",
+    "Darya Khan",
+    "Dera Ghazi",
+    "Dhaular",
+    "Dina",
+    "Dinga",
+    "Dipalpur",
+    "Faisalabad",
+    "Fateh Jhang",
+    "Ghakhar Mandi",
+    "Gojra",
+    "Gujranwala",
+    "Gujrat",
+    "Gujar Khan",
+    "Hafizabad",
+    "Haroonabad",
+    "Hasilpur",
+    "Haveli",
+    "Lakha",
+    "Jalalpur",
+    "Jattan",
+    "Jampur",
+    "Jaranwala",
+    "Jhang",
+    "Jhelum",
+    "Kalabagh",
+    "Karor Lal",
+    "Kasur",
+    "Kamalia",
+    "Kamoke",
+    "Khanewal",
+    "Khanpur",
+    "Kharian",
+    "Khushab",
+    "Kot Adu",
+    "Jauharabad",
+    "Lahore",
+    "Lalamusa",
+    "Layyah",
+    "Liaquat Pur",
+    "Lodhran",
+    "Malakwal",
+    "Mamoori",
+    "Mailsi",
+    "Mandi Bahauddin",
+    "mian Channu",
+    "Mianwali",
+    "Multan",
+    "Murree",
+    "Muridke",
+    "Mianwali Bangla",
+    "Muzaffargarh",
+    "Narowal",
+    "Okara",
+    "Renala Khurd",
+    "Pakpattan",
+    "Pattoki",
+    "Pir Mahal",
+    "Qaimpur",
+    "Qila Didar",
+    "Rabwah",
+    "Raiwind",
+    "Rajanpur",
+    "Rahim Yar",
+    "Rawalpindi",
+    "Sadiqabad",
+    "Safdarabad",
+    "Sahiwal",
+    "Sangla Hill",
+    "Sarai Alamgir",
+    "Sargodha",
+    "Shakargarh",
+    "Sheikhupura",
+    "Sialkot",
+    "Sohawa",
+    "Soianwala",
+    "Siranwali",
+    "Talagang",
+    "Taxila",
+    "Toba Tek",
+    "Vehari",
+    "Wah Cantonment",
+    "Wazirabad",
+    "Badin",
+    "Bhirkan",
+    "Rajo Khanani",
+    "Chak",
+    "Dadu",
+    "Digri",
+    "Diplo",
+    "Dokri",
+    "Ghotki",
+    "Haala",
+    "Hyderabad",
+    "Islamkot",
+    "Jacobabad",
+    "Jamshoro",
+    "Jungshahi",
+    "Kandhkot",
+    "Kandiaro",
+    "Karachi",
+    "Kashmore",
+    "Keti Bandar",
+    "Khairpur",
+    "Kotri",
+    "Larkana",
+    "Matiari",
+    "Mehar",
+    "Mirpur Khas",
+    "Mithani",
+    "Mithi",
+    "Mehrabpur",
+    "Moro",
+    "Nagarparkar",
+    "Naudero",
+    "Naushahro Feroze",
+    "Naushara",
+    "Nawabshah",
+    "Nazimabad",
+    "Qambar",
+    "Qasimabad",
+    "Ranipur",
+    "Ratodero",
+    "Rohri",
+    "Sakrand",
+    "Sanghar",
+    "Shahbandar",
+    "Shahdadkot",
+    "Shahdadpur",
+    "Shahpur Chakar",
+    "Shikarpaur",
+    "Sukkur",
+    "Tangwani",
+    "Tando Adam",
+    "Tando Allahyar",
+    "Tando Muhammad",
+    "Thatta",
+    "Umerkot",
+    "Warah",
+    "Abbottabad",
+    "Adezai",
+    "Alpuri",
+    "Akora Khattak",
+    "Ayubia",
+    "Banda Daud",
+    "Bannu",
+    "Batkhela",
+    "Battagram",
+    "Birote",
+    "Chakdara",
+    "Charsadda",
+    "Chitral",
+    "Daggar",
+    "Dargai",
+    "Darya Khan",
+    "dera Ismail",
+    "Doaba",
+    "Dir",
+    "Drosh",
+    "Hangu",
+    "Haripur",
+    "Karak",
+    "Kohat",
+    "Kulachi",
+    "Lakki Marwat",
+    "Latamber",
+    "Madyan",
+    "Mansehra",
+    "Mardan",
+    "Mastuj",
+    "Mingora",
+    "Nowshera",
+    "Paharpur",
+    "Pabbi",
+    "Peshawar",
+    "Saidu Sharif",
+    "Shorkot",
+    "Shewa Adda",
+    "Swabi",
+    "Swat",
+    "Tangi",
+    "Tank",
+    "Thall",
+    "Timergara",
+    "Tordher",
+    "Awaran",
+    "Barkhan",
+    "Chagai",
+    "Dera Bugti",
+    "Gwadar",
+    "Harnai",
+    "Jafarabad",
+    "Jhal Magsi",
+    "Kacchi",
+    "Kalat",
+    "Kech",
+    "Kharan",
+    "Khuzdar",
+    "Killa Abdullah",
+    "Killa Saifullah",
+    "Kohlu",
+    "Lasbela",
+    "Lehri",
+    "Loralai",
+    "Mastung",
+    "Musakhel",
+    "Nasirabad",
+    "Nushki",
+    "Panjgur",
+    "Pishin valley",
+    "Quetta",
+    "Sherani",
+    "Sibi",
+    "Sohbatpur",
+    "Washuk",
+    "Zhob",
+    "Ziarat"
   ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: CustomAppBar(title: 'Checkout', backButton: true),
-        body: Layout(
-          widget: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: "Name",
-                          hintText: "Enter your name",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: SuffixIcon(icon: Icons.lock),
+        body: Stack(
+            children:[
+              Layout(
+                widget:
+              Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 15),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Name",
+                            hintText: "Enter your name",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                            suffixIcon: SuffixIcon(icon: Icons.lock),
+                          ),
                         ),
-                      ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: "Contact",
-                          hintText: "Enter your contact",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: SuffixIcon(icon: Icons.phone),
+                        SizedBox(height: 20),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Contact",
+                            hintText: "Enter your contact",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                            suffixIcon: SuffixIcon(icon: Icons.phone),
+                          ),
                         ),
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.multiline,
-                        maxLines: null,
-                        decoration: InputDecoration(
-                          labelText: "Address",
-                          hintText: "Enter your password",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: SuffixIcon(icon: Icons.location_on),
+                        SizedBox(height: 20),
+                        TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          decoration: InputDecoration(
+                            labelText: "Address",
+                            hintText: "Enter your password",
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                            suffixIcon: SuffixIcon(icon: Icons.location_on),
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 65,
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(28.0),
-                            border: Border.all(color: TextColor2)),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton(
-                            // Initial Value
-                            borderRadius: BorderRadius.circular(28),
-                            isExpanded: true,
-                            value: dropdownvalue,
-                            // Down Arrow Icon
-                            icon: const Icon(Icons.keyboard_arrow_down),
+                        SizedBox(height: 20),
+                        Container(
+                          height: 65,
+                          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(28.0),
+                              border: Border.all(color: TextColor2)),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              // Initial Value
+                              borderRadius: BorderRadius.circular(28),
+                              isExpanded: true,
+                              value: dropdownvalue,
+                              // Down Arrow Icon
+                              icon: const Icon(Icons.keyboard_arrow_down),
 
-                            // Array list of items
-                            items: items.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
+                              // Array list of items
+                              items: items.map((String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  dropdownvalue = newValue!;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          elevation: 2,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: SecondaryColor,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Order Summary: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: SecondaryColor,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Product1: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Rs. 1500',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Product2: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Rs. 1200',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Divider(
+                                    color: SecondaryColor,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Total:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          'Rs 2700',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 100),
+
+                      ],
+                    ),
+                  ),
+                )],
+                ),
+              ),
+
+              Positioned(
+                right: -8.0,
+                //left: -8.0,
+                bottom: 0,
+                width: MediaQuery.of(context).size.width +8,
+                child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, -3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width/2,
+                        height: 70,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [Color(0xFFA7B2AD), Colors.white],
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Total',
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: TextColor1),
+                            ),
+                            Text('Rs. 1200',
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: PrimaryColor, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width/2 +8,
+                          height: 78,
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.white,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => Success(),
+                                ),
                               );
-                            }).toList(),
-                            // After selecting the desired option,it will
-                            // change button value to selected value
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownvalue = newValue!;
-                              });
                             },
+                            child: Ink(
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                gradient: PrimaryGradientColor,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(80.0)),
+                              ),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Place Order',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -106,7 +534,7 @@ class _CheckoutState extends State<Checkout> {
             ],
           ),
         ),
-      ),
+
     );
   }
 }

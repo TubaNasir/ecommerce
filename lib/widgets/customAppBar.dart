@@ -5,10 +5,12 @@ import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
-  const CustomAppBar({Key? key, required this.title, required this.backButton}) : super(key: key);
+  const CustomAppBar({Key? key, required this.title, required this.backButton})
+      : super(key: key);
 
   final String title;
   final bool backButton;
+
   @override
   Widget build(BuildContext context) {
     int numOfitem = 5;
@@ -21,14 +23,36 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Container(
                   height: 100.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(bottomRight: Radius.circular(30.0)),
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(30.0)),
                     gradient: PrimaryGradientColor,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Stack(
-                      children:[
-                        if (context.watch<NavBar>().page.toString() == 'home') InkWell(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        backButton ? InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.black,
+                          ),
+                        ) : SizedBox(width: 30),
+                        Text(
+                          title,
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .headlineSmall,
+                          textAlign: TextAlign.center,
+                        ),
+                        (context
+                            .watch<NavBar>()
+                            .page
+                            .toString() == 'home') ? InkWell(
                           borderRadius: BorderRadius.circular(100),
                           child: Stack(
                             clipBehavior: Clip.none,
@@ -41,7 +65,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                   color: SecondaryColor.withOpacity(0.1),
                                   shape: BoxShape.circle,
                                 ),
-                                child: Icon(Icons.notifications_active_outlined),
+                                child: Icon(
+                                    Icons.notifications_active_outlined),
                               ),
                               if (numOfitem != 0)
                                 Positioned(
@@ -70,47 +95,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 )
                             ],
                           ),
-                        ),
-                        Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          backButton ? InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                            ),
-                          ) : Container(),
-                          Text(
-                              title,
-                            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(width: 20),
-                        ],
-                      ),
-                      ]
+                        ) :
+                        SizedBox(width: 30),
+                      ],
                     ),
 
                   )
               ),
               Container(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
                 height: 30,
                 decoration: const BoxDecoration(
                   gradient: PrimaryGradientColor,
                 ),
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 30,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius:
                     BorderRadius.only(topLeft: Radius.circular(30.0)),
                   ),
-
                 ),
               ),
             ],
@@ -123,4 +134,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(130);
+
 }
