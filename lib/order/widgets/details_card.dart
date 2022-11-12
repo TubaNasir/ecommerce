@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class DetailsCard extends StatefulWidget {
   const DetailsCard({
-    Key? key,
+    Key? key, required this.order,
   }) : super(key: key);
+
+  final Order order;
 
   @override
   State<DetailsCard> createState() => _DetailsCardState();

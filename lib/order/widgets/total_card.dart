@@ -2,14 +2,16 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/order/order_model.dart';
 import 'package:flutter/material.dart';
 
-class TotalCard extends StatefulWidget {
-  const TotalCard({Key? key}) : super(key: key);
+class TotalCard extends StatelessWidget {
+  const TotalCard({Key? key, required this.order}) : super(key: key);
 
-  @override
-  State<TotalCard> createState() => _TotalCardState();
-}
+  final Order order;
 
-class _TotalCardState extends State<TotalCard> {
+//   @override
+//   State<TotalCard> createState() => _TotalCardState();
+// }
+//
+// class _TotalCardState extends State<TotalCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(

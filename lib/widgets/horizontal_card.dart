@@ -13,7 +13,7 @@ class HorizontalCard extends StatelessWidget {
 
   final String productImage;
   final String cardTitle, cardSubtitle;
-  final Icon icon;
+  final Widget icon;
   final VoidCallback press;
 
   @override
@@ -69,3 +69,4 @@ class HorizontalCard extends StatelessWidget {
     );
   }
 }
+

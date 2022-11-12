@@ -26,7 +26,7 @@ class MyOrders extends StatelessWidget {
             press: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => OrderDetails(),
+                  builder: (context) => OrderDetails(order: e,),
                 ),
               );
             },
