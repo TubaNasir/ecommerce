@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/widgets/curve_clipper.dart';
-import 'package:ecommerce/widgets/customAppBar.dart';
+import 'package:ecommerce/widgets/customAppBar2.dart';
 import 'package:flutter/material.dart';
 import '../home/home_model.dart';
 
@@ -22,6 +22,7 @@ class _ProductDetailState extends State<ProductDetail> {
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
               ClipPath(
                 clipper : CurveClipper(),
@@ -113,6 +114,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   ),
                 ),
               ),
+              CustomAppBar2(),
             ],
           ),
         ),
