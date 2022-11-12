@@ -493,35 +493,32 @@ class _CheckoutState extends State<Checkout> {
                           ],
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width/2 +8,
-                          height: 78,
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              backgroundColor: Colors.white,
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => Success(),
-                                ),
-                              );
-                            },
-                            child: Ink(
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                gradient: PrimaryGradientColor,
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(80.0)),
+                      Container(
+                        width: MediaQuery.of(context).size.width/2 + 8,
+                        height: 78,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Success(),
                               ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  'Place Order',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
-                                ),
+                            );
+                          },
+                          child: Ink(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              gradient: PrimaryGradientColor,
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(80.0), bottomLeft: Radius.circular(80.0)),
+                            ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Place Order',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
                               ),
                             ),
                           ),
