@@ -32,20 +32,21 @@ class _SearchState extends State<Search> {
               SizedBox(height: 20),
               (demoProducts.isNotEmpty)
                   ? Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          GridView.count(
-                              shrinkWrap: true,
-                              primary: false,
-                              crossAxisCount: 2,
-                              children: List.generate(demoProducts.length, (index) {
-                                return ProductCard(product: demoProducts[index]);
-                              }),
-                            ),
-                        ],
-                      ),
-                    ),
+                child: ProductList(demoList: demoProducts,),
+                    // child: SingleChildScrollView(
+                    //   child: Column(
+                    //     children: [
+                    //       GridView.count(
+                    //           shrinkWrap: true,
+                    //           primary: false,
+                    //           crossAxisCount: 2,
+                    //           children: List.generate(demoProducts.length, (index) {
+                    //             return ProductCard(product: demoProducts[index]);
+                    //           }),
+                    //         ),
+                    //     ],
+                    //   ),
+                    // ),
                   )
                   : Text('No Products Found'),
             ],
@@ -55,3 +56,29 @@ class _SearchState extends State<Search> {
     );
   }
 }
+
+class ProductList extends StatelessWidget {
+  ProductList({Key? key, required this.demoList}) : super(key: key);
+
+  List<Product> demoList;
+
+  @override
+  Widget build(BuildContext context) {
+    return
+      SingleChildScrollView(
+        child: Column(
+          children: [
+            GridView.count(
+              shrinkWrap: true,
+              primary: false,
+              crossAxisCount: 2,
+              children: List.generate(demoList.length, (index) {
+                return ProductCard(product: demoList[index]);
+              }),
+            ),
+          ],
+        ),
+      );
+  }
+}
+
