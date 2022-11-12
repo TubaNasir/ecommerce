@@ -2,7 +2,6 @@ import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home.dart';
 import 'package:ecommerce/order/order_details.dart';
 import 'package:ecommerce/order/order_model.dart';
-import 'package:ecommerce/productDetail/product_detail.dart';
 import 'package:ecommerce/search/search.dart';
 import 'package:ecommerce/signup/signup.dart';
 import 'package:ecommerce/store/store_main.dart';
