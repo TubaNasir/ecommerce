@@ -36,9 +36,7 @@ class _NotificationsState extends State<Notifications> {
                         //store logo?
                         title: Text(notificationList[index].title),
                         trailing: Text(
-                            notificationList[index].time.hour.toString() +
-                                ":" +
-                                notificationList[index].time.minute.toString(),
+                            "${notificationList[index].time.hour}:${notificationList[index].time.minute}",
                         style: Theme.of(context).textTheme.bodySmall,),
                       ),
                     ))));
