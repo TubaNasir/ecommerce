@@ -6,6 +6,7 @@ import 'package:ecommerce/product_detail/product_detail.dart';
 import 'package:ecommerce/search/search.dart';
 import 'package:ecommerce/success/success.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
+import 'package:ecommerce/widgets/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommerce/themes.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home:  ProductDetail(),
+      home:  Home(),
     );
   }
 }

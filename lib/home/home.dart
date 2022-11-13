@@ -53,15 +53,14 @@ class _HomeState extends State<Home> {
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       childAspectRatio: MediaQuery.of(context).size.width /
-                          (MediaQuery.of(context).size.height/1.5),
+                          (MediaQuery.of(context).size.height / 1.5),
                       children: List.generate(demoProducts.length, (index) {
-                        return Container(height: 150,child: ProductCard(product: demoProducts[index]));
+                        return Container(
+                            height: 150,
+                            child: ProductCard(product: demoProducts[index]));
                       }),
                     ),
-                    SizedBox(height:100),
-
-
-
+                    SizedBox(height: 100),
                   ],
                 ),
               ),
@@ -137,7 +136,11 @@ class Promotion extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: Stack(
           children: [
-            Image.asset("assets/images/banner1.png", fit: BoxFit.fill),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child:
+                    Image.asset("assets/images/banner1.png", fit: BoxFit.fill)),
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -225,23 +228,27 @@ class CategoryCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: InkWell(
         onTap: onPress,
-        child: Column(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                color: PrimaryLightColor,
-                borderRadius: BorderRadius.circular(10.0),
+        child: Container(
+          height: 80,
+          width: 80,
+          child: Column(
+            children: [
+              Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: PrimaryLightColor,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset(category["icon"]),
+                ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(category["icon"]),
-              ),
-            ),
-            SizedBox(height: 5),
-            Text(category["text"]),
-          ],
+              SizedBox(height: 5),
+              Text(category["text"]),
+            ],
+          ),
         ),
       ),
     );
