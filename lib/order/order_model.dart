@@ -6,6 +6,7 @@ class Product {
   final String image;
   final int price;
   final int storeID;
+  final int quantity;
 
   Product({
     required this.id,
@@ -14,6 +15,7 @@ class Product {
     required this.price,
     required this.description,
     required this.storeID,
+    required this.quantity,
   });
 }
 
@@ -31,7 +33,7 @@ class Order {
   Order(
       {required this.id,
       required this.name,
-        required this.contact,
+      required this.contact,
       required this.address,
       required this.city,
       required this.status,
@@ -56,6 +58,7 @@ Order order = Order(
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
       title: "Wireless Controller for PS4™",
       price: 1000,
+      quantity: 2,
       description: "This is a red shirt. Material is agdjd",
       storeID: 1,
     ),
@@ -65,6 +68,7 @@ Order order = Order(
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
       title: "Wireless Controller for PS4™",
       price: 1000,
+      quantity: 2,
       description: "This is a red shirt. Material is agdjd",
       storeID: 1,
     ),
@@ -88,6 +92,7 @@ List<Order> demoOrders = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
         title: "Wireless Controller for PS4™",
         price: 1000,
+        quantity: 2,
         description: "This is a red shirt. Material is agdjd",
         storeID: 1,
       ),
@@ -97,6 +102,135 @@ List<Order> demoOrders = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
         title: "Wireless Controller for PS4™",
         price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+    ],
+  ),
+  Order(
+    id: 2,
+    contact: 02323223232,
+    name: 'Faakeha Ahmed',
+    address: 'Iba Karachi akjskajd sajdka akjdksd',
+    city: 'Karachi',
+    status: 'Placed',
+    placedOn: DateTime.now(),
+    total: 1000,
+    products: [
+      Product(
+        id: 1,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+      Product(
+        id: 2,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+    ],
+  ),
+  Order(
+    id: 3,
+    contact: 02323223232,
+    name: 'Faakeha Ahmed',
+    address: 'Iba Karachi akjskajd sajdka akjdksd',
+    city: 'Karachi',
+    status: 'Placed',
+    placedOn: DateTime.now(),
+    total: 1000,
+    products: [
+      Product(
+        id: 1,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+      Product(
+        id: 2,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+    ],
+  ),
+  Order(
+    id: 4,
+    contact: 02323223232,
+    name: 'Faakeha Ahmed',
+    address: 'Iba Karachi akjskajd sajdka akjdksd',
+    city: 'Karachi',
+    status: 'Placed',
+    placedOn: DateTime.now(),
+    total: 1000,
+    products: [
+      Product(
+        id: 1,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+      Product(
+        id: 2,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+    ],
+  ),
+  Order(
+    id: 5,
+    contact: 02323223232,
+    name: 'Faakeha Ahmed',
+    address: 'Iba Karachi akjskajd sajdka akjdksd',
+    city: 'Karachi',
+    status: 'Placed',
+    placedOn: DateTime.now(),
+    total: 1000,
+    products: [
+      Product(
+        id: 1,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
+        description: "This is a red shirt. Material is agdjd",
+        storeID: 1,
+      ),
+      Product(
+        id: 2,
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+        title: "Wireless Controller for PS4™",
+        price: 1000,
+        quantity: 2,
         description: "This is a red shirt. Material is agdjd",
         storeID: 1,
       ),

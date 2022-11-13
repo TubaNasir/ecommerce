@@ -1,10 +1,12 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/storeManager/widgets/bottom_nav_bar_store/bottom_nav_bar_store.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/home.dart';
 import '../../home/home_model.dart';
 import '../../search/search.dart';
+import '../../widgets/layout.dart';
 
 class StoreHome extends StatelessWidget {
   const StoreHome({Key? key}) : super(key: key);
@@ -16,21 +18,26 @@ class StoreHome extends StatelessWidget {
         title: "Store Name",
         backButton: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(14.0),
-        child: Column(
-          children: [
-            Heading(text: 'Products'),
-            SizedBox(height: 20,),
-            ProductList(demoList: demoProducts,),
-          ],
+      body: Stack(
+        children: [Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: Layout(
+            widget: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Heading(text: 'Products'),
+                  SizedBox(height: 20,),
+                  ProductList(demoList: demoProducts,),
+                  SizedBox(height: 40,),
+                ],
+              ),
+            ),
+          ),
         ),
+          BottomNavBarStore()
+    ]
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: PrimaryColor,
-        child: Icon(Icons.add),
-        onPressed: (){},
-      ),
+
     );
   }
 }

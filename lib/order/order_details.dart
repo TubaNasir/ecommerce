@@ -7,14 +7,16 @@ import 'package:ecommerce/order/widgets/details_card.dart';
 import 'package:ecommerce/order/widgets/products_card.dart';
 import 'package:ecommerce/order/widgets/total_card.dart';
 
-class OrderDetails extends StatefulWidget {
-  const OrderDetails({Key? key}) : super(key: key);
+class OrderDetails extends StatelessWidget {
+  const OrderDetails({Key? key, required this.order}) : super(key: key);
 
-  @override
-  State<OrderDetails> createState() => _OrderDetailsState();
-}
+  final Order order;
 
-class _OrderDetailsState extends State<OrderDetails> {
+//   @override
+//   State<OrderDetails> createState() => _OrderDetailsState();
+// }
+//
+// class _OrderDetailsState extends State<OrderDetails> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,15 +26,15 @@ class _OrderDetailsState extends State<OrderDetails> {
           widget: SingleChildScrollView(
             child: Column(
               children: [
-                Text('ORDER ID: ${order.id}',
+                Text('ORDER ID: ${this.order.id}',
                     style: Theme.of(context).textTheme.titleMedium,
                     textAlign: TextAlign.center),
-                Text('Placed on: 3/9/21',
+                Text('Placed on: ${order.placedOn}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                DetailsCard(),
-                ProductsCard(),
-                TotalCard(),
+                DetailsCard(order: order,),
+                ProductsCard(order: order,),
+                TotalCard(order: order,),
               ],
             ),
           ),
@@ -40,6 +42,9 @@ class _OrderDetailsState extends State<OrderDetails> {
       ),
     );
   }
+
+
 }
+
 
 
