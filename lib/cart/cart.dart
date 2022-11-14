@@ -197,7 +197,7 @@ class _CartState extends State<Cart> {
                             }, 
                             child: const Text("Continue")
                           ),
-                          SizedBox(height: 100),
+                          const SizedBox(height: 100),
                         ]
                       ),
                     ),

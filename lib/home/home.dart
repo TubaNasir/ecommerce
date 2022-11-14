@@ -23,49 +23,36 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: CustomAppBar(title: 'Welcome, Tuba!', backButton: false),
+        appBar: const CustomAppBar(title: 'Welcome, Tuba!', backButton: false),
         body: Stack(
           children: [
             Layout(
               widget: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SearchBar(),
-                    SizedBox(height: 20),
-                    Heading(text: 'Categories'),
-                    SizedBox(height: 10),
-                    Categories(),
-                    SizedBox(height: 20),
-                    Heading(text: 'Promotion'),
-                    SizedBox(height: 10),
-                    Promotion(),
-                    SizedBox(height: 20),
-                    Heading(text: "Popular Products"),
-                    SizedBox(height: 10),
-                    PopularProducts(),
-                    SizedBox(height: 20),
-                    Heading(text: "New Arrivals"),
-                    SizedBox(height: 10),
-                    GridView.count(
-                      shrinkWrap: true,
-                      primary: false,
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: MediaQuery.of(context).size.width /
-                          (MediaQuery.of(context).size.height / 1.5),
-                      children: List.generate(demoProducts.length, (index) {
-                        return Container(
-                            height: 150,
-                            child: ProductCard(product: demoProducts[index]));
-                      }),
-                    ),
-                    SizedBox(height: 100),
+                    const SearchBar(),
+                    const SizedBox(height: 20),
+                    const Heading(text: 'Categories'),
+                    const SizedBox(height: 10),
+                    const Categories(),
+                    const SizedBox(height: 20),
+                    const Heading(text: 'Promotion'),
+                    const SizedBox(height: 10),
+                    const Promotion(),
+                    const SizedBox(height: 20),
+                    const Heading(text: "Popular Products"),
+                    const SizedBox(height: 10),
+                    const PopularProducts(),
+                    const SizedBox(height: 20),
+                    const Heading(text: "New Arrivals"),
+                    const SizedBox(height: 10),
+                    Container(height: 300,width: 500,child: Products(demoList: demoProducts)),
+                    const SizedBox(height: 100),
                   ],
                 ),
               ),
             ),
-            BottomNavBar(),
+            const BottomNavBar(),
           ],
         ),
       ),
@@ -147,8 +134,8 @@ class Promotion extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color(0xFF343434).withOpacity(0.4),
-                      Color(0xFF343434).withOpacity(0.15),
+                      const Color(0xFF343434).withOpacity(0.4),
+                      const Color(0xFF343434).withOpacity(0.15),
                     ]),
               ),
             ),
@@ -199,7 +186,7 @@ class Categories extends StatelessWidget {
                       category: cat,
                       onPress: () {
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => Search()));
+                            MaterialPageRoute(builder: (context) => const Search()));
                       },
                     ),
                   )
@@ -245,7 +232,7 @@ class CategoryCard extends StatelessWidget {
                   child: SvgPicture.asset(category["icon"]),
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(category["text"]),
             ],
           ),
