@@ -1,5 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/success/success.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:ecommerce/widgets/button.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:ecommerce/widgets/layout.dart';

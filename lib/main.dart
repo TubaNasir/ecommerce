@@ -1,3 +1,5 @@
+import 'package:ecommerce/cart/cart.dart';
+import 'package:ecommerce/checkout/checkout.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home.dart';
 import 'package:ecommerce/order/order_details.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home: Orders(),
+      home: Cart(),
     );
   }
 }
