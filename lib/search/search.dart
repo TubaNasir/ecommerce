@@ -1,5 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home_model.dart';
+import 'package:ecommerce/product_detail/product_detail.dart';
 import 'package:ecommerce/widgets/button.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:ecommerce/widgets/layout.dart';
@@ -80,14 +81,12 @@ class Products extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (_) => DetailsScreen(
-        //       product: product,
-        //     ),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ProductDetail()
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),

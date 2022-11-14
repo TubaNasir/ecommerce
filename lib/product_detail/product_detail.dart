@@ -43,26 +43,22 @@ class _ProductDetailState extends State<ProductDetail> {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.55,
                 width: MediaQuery.of(context).size.width,
-                child: Container(
+                child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Flexible(
-                                  child: Container(
-                                    child: Text(product.title,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold,),
-                                    maxLines:5,
-                                    ),
+                                  child: Text(product.title,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold,),
+                                  maxLines:5,
                                   ),
                                 ),
                                 SizedBox(height: 5),
@@ -84,8 +80,6 @@ class _ProductDetailState extends State<ProductDetail> {
                                 ),
                               ),
                             ),
-                          ],
-                        ),
                         SizedBox(height: 20),
                         Text('Rs. ${product.price}',
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
