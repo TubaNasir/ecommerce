@@ -103,7 +103,7 @@ class Products extends StatelessWidget {
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 1.02,
+            childAspectRatio: 0.75,
           ),
           itemCount: demoList.length,
           itemBuilder: (context, index) {
