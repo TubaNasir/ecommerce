@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ecommerce/checkout/checkout.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:ecommerce/widgets/button.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../success/success.dart';
@@ -16,217 +18,162 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   late List<Product> cartList;
+
   @override
   void initState() {
-  cartList = [
-  Product(
-    id: 1,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
-    title: "Wireless Controller for PS4™ nsadfk akjdnaksj kjands",
-    price: 1000,
-    description: "This is a red shirt. Material is agdjd dlfk skrn fjrndf erfr kenedf resjfnr",
-    storeID: 1,
-    qty: 1
-  ),
-  Product(
-      id: 2,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
-      title: "Wireless Controller for PS4™",
-      price: 1000,
-      description: "This is a red shirt. Material is agdjd",
-      storeID: 1,
-      qty: 1
-  ),
-  Product(
-      id: 3,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
-      title: "Wireless Controller for PS4™",
-      price: 1000,
-      description: "This is a red shirt. Material is agdjd",
-      storeID: 1,
-      qty: 1
-  ),
-  ];
+    cartList = [
+      Product(
+          id: 1,
+          image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+          title: "Wireless Controller for PS4™ nsadfk akjdnaksj kjands",
+          price: 1000,
+          description:
+              "This is a red shirt. Material is agdjd dlfk skrn fjrndf erfr kenedf resjfnr",
+          storeID: 1,
+          qty: 1),
+      Product(
+          id: 2,
+          image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+          title: "Wireless Controller for PS4™",
+          price: 1000,
+          description: "This is a red shirt. Material is agdjd",
+          storeID: 1,
+          qty: 1),
+      Product(
+          id: 3,
+          image:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
+          title: "Wireless Controller for PS4™",
+          price: 1000,
+          description: "This is a red shirt. Material is agdjd",
+          storeID: 1,
+          qty: 1),
+    ];
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: "Cart",
-        backButton: false,
-      ),
-      //backgroundColor: Colors.grey.shade200,
-      body: 
-        Stack(
-          children:[
+        appBar: const CustomAppBar(
+          title: "Cart",
+          backButton: false,
+        ),
+        //backgroundColor: Colors.grey.shade200,
+        body: Stack(children: [
           Layout(
-            widget: 
+              widget: SingleChildScrollView(
+            child: Column(children: [
               Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
+                children: cartList
+                    .map((e) => CartCard(
+                        product: e,
+                        cartList: cartList,
+                        onCartChanged: () {
+                          setState(() {});
+                        }))
+                    .toList(),
+              ),
+              // ListView.builder(
+              //   shrinkWrap: true,
+              //   physics: NeverScrollableScrollPhysics(),
+              //   itemCount: cartList.length,
+              //   itemBuilder: (context, index) {
+              //     return Padding(
+              //       padding: const EdgeInsets.all(8.0),
+              //       //CartCards(productImage: cartList[index].image, cardTitle: cartList[index].title, cardSubtitle: cartList[index].price.toString(), press: (){}),
+              //       child: CartCard(
+              //         product: cartList[index],
+              //         cartList: cartList,
+              //         onCartChanged: () {
+              //           setState(() {});
+              //         },
+              //       ),
+              //     );
+              //   },
+              // ),
+              Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  elevation: 2,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: SecondaryColor,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: cartList.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: CartCard(
-                                  product: cartList[index],
-                                  cartList: cartList,
-                                  onCartChanged: () {
-                                    setState(() {});
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                          Card(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                            elevation: 2,
-                            child: Container(
-                              decoration: BoxDecoration(
-                              border: Border.all(
-                                color: SecondaryColor,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Total: ',
+                                style: Theme.of(context).textTheme.titleMedium,
+                                textAlign: TextAlign.left,
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              Text(
+                                'Rs 2700',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Order Summary: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleMedium,
-                                          textAlign: TextAlign.left,
-                                        ),
-                                      ],
-                                    ),
-                                    const Divider(
-                                      color: SecondaryColor,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Product1: ',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium,
-                                          ),
-                                          Text(
-                                            'Rs. 1500',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Product2: ',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium,
-                                          ),
-                                          Text(
-                                            'Rs. 1200',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const Divider(
-                                      color: SecondaryColor,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Total:',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                    fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            'Rs 2700',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyMedium
-                                                ?.copyWith(
-                                                    fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                            ],
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.of(context).push( 
-                                MaterialPageRoute(builder: (context) => const Checkout())
-                              );
-                            }, 
-                            child: const Text("Continue")
-                          ),
-                          const SizedBox(height: 100),
-                        ]
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              )
-            ),
-            BottomNavBar()
-          ]
-        )
-    );
+                  )),
+              SizedBox(height: 20),
+              CustomButton(
+                text: 'Continue',
+                pressed: () {
+                  Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => const Checkout())
+                          );
+                },
+              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(builder: (context) => const Checkout())
+              //     );
+              //   },
+              //   child: const Text("Continue")
+              // ),
+              SizedBox(height: 100),
+            ]),
+          )),
+          BottomNavBar()
+        ]));
   }
 }
 
 class CartCard extends StatefulWidget {
-
-  const CartCard({Key? key, required this.product, required this.cartList, required this.onCartChanged}) : super(key: key);//required this.actualProduct}) : super(key: key);
+  const CartCard(
+      {Key? key,
+      required this.product,
+      required this.cartList,
+      required this.onCartChanged})
+      : super(key: key); //required this.actualProduct}) : super(key: key);
 
   final List<Product> cartList;
   final Product product;
   final VoidCallback onCartChanged;
+
   //final Product actualProduct;
   @override
   // ignore: no_logic_in_create_state
-  State<CartCard> createState() => _CartCardState(cartList,onCartChanged);
+  State<CartCard> createState() => _CartCardState(cartList, onCartChanged);
 }
 
 class _CartCardState extends State<CartCard> {
-  
   final List<Product> cartList;
   final VoidCallback onCartChanged;
 
@@ -234,41 +181,252 @@ class _CartCardState extends State<CartCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child:  ListTile(
-        leading: Image.network(widget.product.image),
-        title: Text(widget.product.title),
-        subtitle: Text("Rs. ${widget.product.price}"),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [ 
-            IconButton(
-            onPressed: () {
-              setState(() {
-                widget.product.qty--;
-                //widget.actualProduct.qty--;
-                if (widget.product.qty < 1) {
-                  cartList.remove(widget.product);
-                }
-              });
-              onCartChanged();
-            },
-            icon: const Icon(Icons.remove),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 88,
+              child: AspectRatio(
+                aspectRatio: 1.11,
+                child: Container(
+                    //width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      color: SecondaryColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                        bottomLeft: Radius.circular(10.0),
+                      ),
+                    ),
+                    child: Image.network(widget.product.image)),
+              ),
             ),
-            Text("${widget.product.qty}"),
-            IconButton(
-            onPressed: () {
-              setState(() {
-                widget.product.qty++;
-              });
-              onCartChanged();
-            },
-            icon: const Icon(Icons.add),),
-          ]) 
-        )
-      );
-    }
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Container(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(0.0, 3.0, 3.0, 0.0),
+                              child: Text(
+                                widget.product.title,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text("Store name",
+                              style: Theme.of(context).textTheme.bodySmall),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "Rs. ${widget.product.price}",
+                            style: Theme.of(context).textTheme.titleMedium,
+                          )
+                        ],
+                      ),
+                    ),
+                    Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.product.qty--;
+                                //widget.actualProduct.qty--;
+                                if (widget.product.qty < 1) {
+                                  cartList.remove(widget.product);
+                                }
+                              });
+                              onCartChanged();
+                            },
+                            icon: const Icon(
+                              Icons.remove_circle,
+                              color: Colors.black,
+                            ),
+                          ),
+                          Text(
+                            "${widget.product.qty}",
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.product.qty++;
+                              });
+                              onCartChanged();
+                            },
+                            icon: const Icon(Icons.add_circle,
+                                color: Colors.black),
+                          ),
+                        ])
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    // return Card(
+    //   elevation: 3,
+    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    //   child:  ListTile(
+    //     leading: Container(
+    //         height: MediaQuery.of(context).size.height,
+    //         decoration: BoxDecoration(
+    //           color: Colors.red,
+    //           borderRadius: BorderRadius.only(
+    //               topLeft: Radius.circular(10.0),
+    //               topRight: Radius.circular(10.0)),
+    //         ),
+    //         child: Image.network(widget.product.image)
+    //     ),
+    //     title: Text(widget.product.title, maxLines: 2, overflow: TextOverflow.ellipsis,),
+    //     subtitle: Text("Rs. ${widget.product.price}"),
+    //     trailing: Row(
+    //       mainAxisSize: MainAxisSize.min,
+    //       children: [
+    //         IconButton(
+    //         onPressed: () {
+    //           setState(() {
+    //             widget.product.qty--;
+    //             //widget.actualProduct.qty--;
+    //             if (widget.product.qty < 1) {
+    //               cartList.remove(widget.product);
+    //             }
+    //           });
+    //           onCartChanged();
+    //         },
+    //         icon: const Icon(Icons.remove),
+    //         ),
+    //         Text("${widget.product.qty}"),
+    //         IconButton(
+    //         onPressed: () {
+    //           setState(() {
+    //             widget.product.qty++;
+    //           });
+    //           onCartChanged();
+    //         },
+    //         icon: const Icon(Icons.add),),
+    //       ])
+    //     )
+    //   );
+  }
+}
+
+class CartCards extends StatefulWidget {
+  const CartCards(
+      {Key? key,
+      required this.productImage,
+      required this.cardTitle,
+      required this.cardSubtitle,
+      //required this.icon,
+      required this.press})
+      : super(key: key);
+
+  final String productImage;
+  final String cardTitle, cardSubtitle;
+
+  //final Widget icon;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: ElevatedButton(
+        onPressed: press,
+        style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.zero,
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 88,
+              child: AspectRatio(
+                aspectRatio: 1.11,
+                child: Container(
+                    //width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      color: SecondaryColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                        bottomLeft: Radius.circular(10.0),
+                      ),
+                    ),
+                    child: Image.network(productImage)),
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0.0, 3.0, 3.0, 0.0),
+                        child: Text(
+                          cardTitle,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      cardSubtitle,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
+  }
+}
