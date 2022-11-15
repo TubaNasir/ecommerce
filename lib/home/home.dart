@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 20),
                     const Heading(text: "New Arrivals"),
                     const SizedBox(height: 10),
-                    Container(height: 300,width: 500,child: Products(demoList: demoProducts)),
+                    SingleChildScrollView(child: Products(demoList: demoProducts),physics: NeverScrollableScrollPhysics(),),
                     const SizedBox(height: 100),
                   ],
                 ),
