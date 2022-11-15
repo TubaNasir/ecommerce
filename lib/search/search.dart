@@ -29,8 +29,6 @@ class _SearchState extends State<Search> {
             children: [
               const SearchBar(),
               const SizedBox(height: 20),
-              CustomButton(pressed: () {  },text: "Search using Camera!"),
-              const SizedBox(height: 20),
               (demoProducts.isNotEmpty)
                   ? 
                 // Expanded(

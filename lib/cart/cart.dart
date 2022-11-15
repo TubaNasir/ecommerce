@@ -132,7 +132,7 @@ class _CartState extends State<Cart> {
                   )),
               SizedBox(height: 20),
               CustomButton(
-                text: 'Continue',
+                text: 'Checkout',
                 pressed: () {
                   Navigator.of(context).push(
                             MaterialPageRoute(builder: (context) => const Checkout())
