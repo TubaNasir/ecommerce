@@ -7,6 +7,8 @@ import 'package:ecommerce/widgets/layout.dart';
 import 'package:ecommerce/widgets/suffix_icon.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/form_field.dart';
+
 class Checkout extends StatefulWidget {
   const Checkout({Key? key}) : super(key: key);
 
@@ -16,9 +18,244 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   // Initial Selected Value
-  String dropdownvalue = 'Karachi';
 
   // List of items in our dropdown menu
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: CustomAppBar(title: 'Checkout', backButton: true),
+        body: Stack(
+            children:[
+              Layout(
+                widget:
+              Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(13.0),
+                          child: CheckoutForm(),
+                        ),
+                        Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          elevation: 2,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: SecondaryColor,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Order Summary: ',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    color: SecondaryColor,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Product1: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Rs. 1500',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Product2: ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                        Text(
+                                          'Rs. 1200',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Divider(
+                                    color: SecondaryColor,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Total:',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          'Rs 2700',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.copyWith(
+                                                  fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 100),
+
+                      ],
+                    ),
+                  ),
+                )],
+                ),
+              ),
+
+              Positioned(
+                right: -8.0,
+                //left: -8.0,
+                bottom: 0,
+                width: MediaQuery.of(context).size.width +8,
+                child: Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, -3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width/2,
+                        height: 70,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [Color(0xFFA7B2AD), Colors.white],
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Total',
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: TextColor1),
+                            ),
+                            Text('Rs. 1200',
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: PrimaryColor, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width/2 + 8,
+                        height: 78,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Success(),
+                              ),
+                            );
+                          },
+                          child: Ink(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              gradient: PrimaryGradientColor,
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(80.0), bottomLeft: Radius.circular(80.0)),
+                            ),
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Place Order',
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+    );
+  }
+}
+
+class CheckoutForm extends StatefulWidget {
+  const CheckoutForm({Key? key}) : super(key: key);
+
+  @override
+  State<CheckoutForm> createState() => _CheckoutFormState();
+}
+
+class _CheckoutFormState extends State<CheckoutForm> {
+  String dropdownvalue = 'Karachi';
+  bool enabled = true;
+
   var items = [
     "Islamabad",
     "Ahmed Nager",
@@ -259,279 +496,66 @@ class _CheckoutState extends State<Checkout> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: CustomAppBar(title: 'Checkout', backButton: true),
-        body: Stack(
-            children:[
-              Layout(
-                widget:
-              Column(
-              children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 15),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: "Name",
-                            hintText: "Enter your name",
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: SuffixIcon(icon: Icons.lock),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: "Contact",
-                            hintText: "Enter your contact",
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: SuffixIcon(icon: Icons.phone),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          decoration: InputDecoration(
-                            labelText: "Address",
-                            hintText: "Enter your password",
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: SuffixIcon(icon: Icons.location_on),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Container(
-                          height: 65,
-                          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(28.0),
-                              border: Border.all(color: TextColor2)),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton(
-                              // Initial Value
-                              borderRadius: BorderRadius.circular(28),
-                              isExpanded: true,
-                              value: dropdownvalue,
-                              // Down Arrow Icon
-                              icon: const Icon(Icons.keyboard_arrow_down),
+    return Column(
+      children: [
+        SizedBox(height: 15),
+        CustomFormField(
+          labelText: "Name",
+          hintText: "Enter your name",
+          icon: SuffixIcon(icon: Icons.person),
+          enabled: enabled,
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        CustomFormField(
+          labelText: "Contact",
+          hintText: "Enter your contact",
+          icon: SuffixIcon(icon: Icons.phone_android),
+          enabled: enabled,
+        ),
+        SizedBox(height: 20),
+        CustomFormField(
+          labelText: "Address",
+          hintText: "Enter your address",
+          icon: SuffixIcon(icon: Icons.location_on),
+          enabled: enabled,
+        ),
+        SizedBox(height: 20),
+        Container(
+          height: 65,
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(28.0),
+              border: Border.all(color: TextColor2)),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton(
+              iconDisabledColor: Colors.white,
+              iconEnabledColor: Colors.white,
+              // Initial Value
+              borderRadius: BorderRadius.circular(28),
+              isExpanded: true,
+              value: dropdownvalue,
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down, color: SecondaryColor,),
 
-                              // Array list of items
-                              items: items.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(items),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  dropdownvalue = newValue!;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          elevation: 2,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: SecondaryColor,
-                              ),
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Order Summary: ',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ],
-                                  ),
-                                  const Divider(
-                                    color: SecondaryColor,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Product1: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          'Rs. 1500',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Product2: ',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                        Text(
-                                          'Rs. 1200',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const Divider(
-                                    color: SecondaryColor,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Total:',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          'Rs 2700',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 100),
-
-                      ],
-                    ),
-                  ),
-                )],
-                ),
-              ),
-
-              Positioned(
-                right: -8.0,
-                //left: -8.0,
-                bottom: 0,
-                width: MediaQuery.of(context).size.width +8,
-                child: Container(
-                  height: 70,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, -3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width/2,
-                        height: 70,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [Color(0xFFA7B2AD), Colors.white],
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Total',
-                              textAlign: TextAlign.left,
-                              style: Theme.of(context).textTheme.titleSmall?.copyWith(color: TextColor1),
-                            ),
-                            Text('Rs. 1200',
-                              textAlign: TextAlign.left,
-                              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: PrimaryColor, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width/2 + 8,
-                        height: 78,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => Success(),
-                              ),
-                            );
-                          },
-                          child: Ink(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              gradient: PrimaryGradientColor,
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(80.0), bottomLeft: Radius.circular(80.0)),
-                            ),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Place Order',
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+              // Array list of items
+              items: items.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownvalue = newValue!;
+                });
+              },
+            ),
           ),
         ),
+        SizedBox(height: 20),
+      ]
 
     );
   }
