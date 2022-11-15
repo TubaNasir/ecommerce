@@ -13,13 +13,21 @@ class SearchBar extends StatelessWidget {
       height: 50,
       decoration: BoxDecoration(
           color: SecondaryColor, borderRadius: BorderRadius.circular(20.0)),
-      child: TextField(
-        decoration: InputDecoration(
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            hintText: 'Search Product',
-            prefixIcon: Icon(Icons.search),
-            contentPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 9)),
+      child: Row(
+        children: [
+          const Expanded(
+            child:
+              TextField(
+                decoration: InputDecoration(
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    hintText: 'Search Product',
+                    prefixIcon: Icon(Icons.search),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 9)),
+              ),
+          ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt,color: PrimaryColor,))
+        ],
       ),
     );
   }
