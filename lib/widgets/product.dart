@@ -23,14 +23,13 @@ class ProductCard extends StatelessWidget {
         ),
         child: SizedBox(
           width: 140,
-          height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
               AspectRatio(
                 aspectRatio: 1.70,
                 child: Container(
                     height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: SecondaryColor,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),

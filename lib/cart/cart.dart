@@ -195,7 +195,7 @@ class _CartState extends State<Cart> {
                                 MaterialPageRoute(builder: (context) => const Checkout())
                               );
                             }, 
-                            child: const Text("Continue")
+                            child: const Text("Checkout")
                           ),
                           const SizedBox(height: 100),
                         ]

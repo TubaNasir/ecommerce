@@ -53,7 +53,7 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      SingleChildScrollView(
+      Container(
         child: Column(
           children: [
             GridView.count(
@@ -88,56 +88,7 @@ class Products extends StatelessWidget {
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  product.image,
-                  fit: BoxFit.cover,
-                  height: size.height*0.26,
-                  width: size.width*0.45
-                  )
-                  // Image(
-                  //   fit: BoxFit.cover,
-                  //   height: size.height * 0.26,
-                  //   width: size.width * 0.45,
-                  //   image: 
-                  // ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Flexible(
-                child: Text(
-                    product.title,
-                    //overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                    ),
-                    softWrap: true,
-                    maxLines: 5,
-                ),
-              ),
-              Flexible(
-                child: Text(
-                  'Rs. ${product.price}',
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.5),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+      child: ProductCard(product: product),
     );
   }
 
@@ -152,7 +103,7 @@ class Products extends StatelessWidget {
           shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 0.65,
+            childAspectRatio: 1.02,
           ),
           itemCount: demoList.length,
           itemBuilder: (context, index) {
