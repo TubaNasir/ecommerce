@@ -1,6 +1,6 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/my_profile/my_profile.dart';
-import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:ecommerce/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/home/home.dart';
@@ -25,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
           children: [
             CustomPaint(
               size: Size(size.width, 80),
-              painter: BNBCustomPainter(),
+              painter: MyCustomPainter(),
             ),
             Center(
                 heightFactor: 0.6,
@@ -33,7 +33,8 @@ class BottomNavBar extends StatelessWidget {
                     onPressed: () {},
                     backgroundColor: PrimaryColor,
                     child: Icon(Icons.camera_alt_outlined, color: Colors.white,),
-                    elevation: 0.1)),
+                    elevation: 0.1),
+            ),
             Container(
               width: size.width,
               height: 80,
@@ -111,7 +112,7 @@ class BottomNavBar extends StatelessWidget {
   }
 }
 
-class BNBCustomPainter extends CustomPainter {
+class MyCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()

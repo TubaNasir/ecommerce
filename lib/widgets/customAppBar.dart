@@ -1,5 +1,5 @@
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

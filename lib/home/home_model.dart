@@ -6,6 +6,7 @@ class Product {
   final String image;
   final int price;
   final int storeID;
+  int quantity;
 
   Product({
     required this.id,
@@ -14,6 +15,7 @@ class Product {
     required this.price,
     required this.description,
     required this.storeID,
+    required this.quantity,
   });
 }
 
@@ -27,6 +29,7 @@ List<Product> demoProducts = [
     price: 1000,
     description: "This is a red shirt. Material is agdjd dlfk skrn fjrndf erfr kenedf resjfnr",
     storeID: 1,
+    quantity: 5,
   ),
   Product(
       id: 2,
@@ -35,6 +38,8 @@ List<Product> demoProducts = [
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
       storeID: 1,
+      quantity: 5,
+
   ),
   Product(
       id: 3,
@@ -43,6 +48,8 @@ List<Product> demoProducts = [
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
       storeID: 2,
+      quantity: 5,
+
   ),
   Product(
       id: 4,
@@ -51,6 +58,7 @@ List<Product> demoProducts = [
       price: 1000,
       description: "This is a red shirt. Material is agdjd",
       storeID: 2,
+      quantity: 5,
   ),
 ];
 

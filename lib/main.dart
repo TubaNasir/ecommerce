@@ -14,7 +14,7 @@ import 'package:ecommerce/storeManager/product/edit_product.dart';
 import 'package:ecommerce/storeManager/storehome/store_home.dart';
 import 'package:ecommerce/storeManager/widgets/bottom_nav_bar_store/bottom_nav_bar_store_model.dart';
 import 'package:ecommerce/success/success.dart';
-import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
+import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommerce/themes.dart';

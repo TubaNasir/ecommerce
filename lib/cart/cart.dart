@@ -17,12 +17,12 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  late List<Product> cartList;
+  late List<Product1> cartList;
 
   @override
   void initState() {
     cartList = [
-      Product(
+      Product1(
           id: 1,
           image:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
@@ -32,7 +32,7 @@ class _CartState extends State<Cart> {
               "This is a red shirt. Material is agdjd dlfk skrn fjrndf erfr kenedf resjfnr",
           storeID: 1,
           qty: 1),
-      Product(
+      Product1(
           id: 2,
           image:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
@@ -41,7 +41,7 @@ class _CartState extends State<Cart> {
           description: "This is a red shirt. Material is agdjd",
           storeID: 1,
           qty: 1),
-      Product(
+      Product1(
           id: 3,
           image:
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ_0CtulSwA_imJJ4nZXEIwu13VNszMaZUBaHgEXVQ&s",
@@ -163,8 +163,8 @@ class CartCard extends StatefulWidget {
       required this.onCartChanged})
       : super(key: key); //required this.actualProduct}) : super(key: key);
 
-  final List<Product> cartList;
-  final Product product;
+  final List<Product1> cartList;
+  final Product1 product;
   final VoidCallback onCartChanged;
 
   //final Product actualProduct;
@@ -174,7 +174,7 @@ class CartCard extends StatefulWidget {
 }
 
 class _CartCardState extends State<CartCard> {
-  final List<Product> cartList;
+  final List<Product1> cartList;
   final VoidCallback onCartChanged;
 
   _CartCardState(this.cartList, this.onCartChanged);
