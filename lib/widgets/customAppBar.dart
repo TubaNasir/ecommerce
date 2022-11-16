@@ -3,6 +3,8 @@ import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../notifications/notifications.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar({Key? key, required this.title, required this.backButton})
