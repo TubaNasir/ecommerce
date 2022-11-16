@@ -1,7 +1,10 @@
 import 'package:ecommerce/constants.dart';
+import 'package:ecommerce/notifications/notification_model.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../notifications/notifications.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
@@ -13,7 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    int numOfitem = 5;
+    int numOfitem = notificationList.length;
 
     return Column(
       children: [
@@ -53,6 +56,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                             .watch<NavBar>()
                             .page
                             .toString() == 'home') ? InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Notifications(),
+                              ),
+                            );
+                          },
                           borderRadius: BorderRadius.circular(100),
                           child: Stack(
                             clipBehavior: Clip.none,
