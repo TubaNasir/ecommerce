@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/my_profile/edit_profile.dart';
 import 'package:ecommerce/order/order.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
@@ -9,13 +10,17 @@ import '../widgets/layout.dart';
 import '../constants.dart';
 
 class MyProfile extends StatefulWidget {
-  const MyProfile({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const MyProfile({required this.camera,super.key});
 
   @override
-  State<MyProfile> createState() => _MyProfileState();
+  State<MyProfile> createState() => _MyProfileState(camera);
 }
 
 class _MyProfileState extends State<MyProfile> {
+  final CameraDescription camera;
+  _MyProfileState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -27,7 +32,7 @@ class _MyProfileState extends State<MyProfile> {
         children: [
           Layout(widget: AccountBody()),
           //AccountBody(),
-          BottomNavBar(),
+          BottomNavBar(camera: camera,),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home_model.dart';
 import 'package:ecommerce/search/search.dart';
@@ -11,13 +12,18 @@ import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Home({required this.camera,super.key});
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Home> createState() => _HomeState(this.camera);
 }
 
 class _HomeState extends State<Home> {
+
+  final CameraDescription camera;
+  _HomeState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,11 +36,11 @@ class _HomeState extends State<Home> {
               widget: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SearchBar(),
+                    SearchBar(camera: camera),
                     const SizedBox(height: 20),
                     const Heading(text: 'Categories'),
                     const SizedBox(height: 10),
-                    const Categories(),
+                    Categories(camera: camera),
                     const SizedBox(height: 20),
                     const Heading(text: 'Promotion'),
                     const SizedBox(height: 10),
@@ -46,13 +52,13 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 20),
                     const Heading(text: "New Arrivals"),
                     const SizedBox(height: 10),
-                    SingleChildScrollView(child: Products(demoList: demoProducts),physics: NeverScrollableScrollPhysics(),),
+                    SingleChildScrollView(child: Products(demoList: demoProducts,camera: camera,),physics: NeverScrollableScrollPhysics(),),
                     const SizedBox(height: 100),
                   ],
                 ),
               ),
             ),
-            const BottomNavBar(),
+            BottomNavBar(camera: camera,),
           ],
         ),
       ),
@@ -159,7 +165,8 @@ class Promotion extends StatelessWidget {
 }
 
 class Categories extends StatelessWidget {
-  const Categories({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Categories({required this.camera,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -186,7 +193,7 @@ class Categories extends StatelessWidget {
                       category: cat,
                       onPress: () {
                         Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const Search()));
+                            MaterialPageRoute(builder: (context) => Search(camera: camera,)));
                       },
                     ),
                   )
@@ -216,8 +223,8 @@ class CategoryCard extends StatelessWidget {
       child: InkWell(
         onTap: onPress,
         child: Container(
-          height: 75,
-          width: 75,
+          height: 80,
+          width: 80,
           child: Column(
             children: [
               Container(

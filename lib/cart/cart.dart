@@ -10,14 +10,18 @@ import '../widgets/layout.dart';
 import 'product_model.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Cart({required this.camera,super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  State<Cart> createState() => _CartState(camera);
 }
 
 class _CartState extends State<Cart> {
   late List<Product1> cartList;
+  final CameraDescription camera;
+
+  _CartState(this.camera);
 
   @override
   void initState() {
@@ -181,7 +185,7 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.all(10.0),
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/login/login.dart';
 import 'package:ecommerce/widgets/button.dart';
@@ -7,13 +8,17 @@ import 'package:flutter/material.dart';
 import '../widgets/form_field.dart';
 
 class CompleteProfile extends StatefulWidget {
-  const CompleteProfile({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const CompleteProfile({required this.camera,super.key});
 
   @override
-  State<CompleteProfile> createState() => _CompleteProfileState();
+  State<CompleteProfile> createState() => _CompleteProfileState(camera);
 }
 
 class _CompleteProfileState extends State<CompleteProfile> {
+  final CameraDescription camera;
+  _CompleteProfileState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +33,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   SizedBox(height: 80),
                   CompleteProfileMessage(),
                   SizedBox(height: 40),
-                  ProfileForm(),
+                  ProfileForm(camera: camera,),
                   SizedBox(height: 20),
-                  SignupRedirection(),
+                  SignupRedirection(camera: camera,),
                 ],
               ),
             ),
@@ -42,9 +47,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
 }
 
 class SignupRedirection extends StatelessWidget {
-  const SignupRedirection({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const SignupRedirection({required this.camera,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +59,7 @@ class SignupRedirection extends StatelessWidget {
         InkWell(
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Login()),
+                MaterialPageRoute(builder: (context) => Login(camera: camera,)),
               );
             },
             child: Text(" Login.", style: TextStyle(color: PrimaryColor))),
@@ -83,17 +87,19 @@ class CompleteProfileMessage extends StatelessWidget {
 }
 
 class ProfileForm extends StatefulWidget {
-  const ProfileForm({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const ProfileForm({required this.camera,super.key});
 
   @override
-  State<ProfileForm> createState() => _ProfileFormState();
+  State<ProfileForm> createState() => _ProfileFormState(camera);
 }
 
 bool enabled = true;
 
 class _ProfileFormState extends State<ProfileForm> {
+  final CameraDescription camera;
+  _ProfileFormState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -125,7 +131,7 @@ class _ProfileFormState extends State<ProfileForm> {
             pressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Login(),
+                  builder: (context) => Login(camera: camera,),
                 ),
               );
             }),

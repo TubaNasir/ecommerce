@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:camera/camera.dart';
 import 'package:ecommerce/checkout/checkout.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/widgets/curve_clipper.dart';
@@ -9,14 +10,18 @@ import 'package:ecommerce/cart/product_model.dart';
 
 
 class ProductDetail extends StatefulWidget {
-  ProductDetail({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  ProductDetail({required this.camera,super.key});
 
   @override
-  State<ProductDetail> createState() => _ProductDetailState();
+  State<ProductDetail> createState() => _ProductDetailState(camera);
 }
 
 class _ProductDetailState extends State<ProductDetail> {
   final Product product = demoProducts[0];
+  
+  final CameraDescription camera;
+  _ProductDetailState(this.camera);
 
 
 
@@ -245,7 +250,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => Checkout(),
+                              builder: (context) => Checkout(camera: camera,),
                             ),
                           );
                         },

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:ecommerce/widgets/horizontal_card.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,19 @@ import '../widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import '../widgets/layout.dart';
 
 class Wishlist extends StatefulWidget {
-  const Wishlist({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Wishlist({required this.camera,super.key});
 
   @override
-  State<Wishlist> createState() => _WishlistState();
+  State<Wishlist> createState() => _WishlistState(camera);
 }
 
 bool fav = true;
 
 class _WishlistState extends State<Wishlist> {
+  final CameraDescription camera;
+  _WishlistState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -51,7 +56,7 @@ class _WishlistState extends State<Wishlist> {
               ],
             ),
           )),
-          BottomNavBar(),
+          BottomNavBar(camera: camera,),
         ],
       ),
     );

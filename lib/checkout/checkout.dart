@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/success/success.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
@@ -10,13 +11,17 @@ import 'package:flutter/material.dart';
 import '../widgets/form_field.dart';
 
 class Checkout extends StatefulWidget {
-  const Checkout({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Checkout({required this.camera,super.key});
 
   @override
-  State<Checkout> createState() => _CheckoutState();
+  State<Checkout> createState() => _CheckoutState(camera);
 }
 
 class _CheckoutState extends State<Checkout> {
+  final CameraDescription camera;
+  _CheckoutState(this.camera);
+
   // Initial Selected Value
 
   // List of items in our dropdown menu
@@ -204,7 +209,7 @@ class _CheckoutState extends State<Checkout> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => Success(),
+                                builder: (context) => Success(camera: camera,),
                               ),
                             );
                           },

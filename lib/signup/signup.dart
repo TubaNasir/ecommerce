@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/complete_profile/complete_profile.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/login/login.dart';
@@ -9,13 +10,17 @@ import 'package:flutter_svg/svg.dart';
 import '../widgets/form_field.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const SignUp({required this.camera,super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignUp> createState() => _SignUpState(camera);
 }
 
 class _SignUpState extends State<SignUp> {
+  final CameraDescription camera;
+  _SignUpState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +35,9 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(height: 40),
                   RegisterMessage(),
                   SizedBox(height: 20),
-                  SignUpForm(),
+                  SignUpForm(camera: camera,),
                   SizedBox(height: 20),
-                  SignupRedirection(),
+                  SignupRedirection(camera: camera,),
                   SizedBox(height: 20),
 
                 ],
@@ -46,9 +51,8 @@ class _SignUpState extends State<SignUp> {
 }
 
 class SignupRedirection extends StatelessWidget {
-  const SignupRedirection({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const SignupRedirection({required this.camera,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +63,7 @@ class SignupRedirection extends StatelessWidget {
         InkWell(
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Login()),
+                MaterialPageRoute(builder: (context) => Login(camera: camera,)),
               );
             },
             child: Text(" Login.", style: TextStyle(color: PrimaryColor))),
@@ -87,16 +91,17 @@ class RegisterMessage extends StatelessWidget {
 }
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const SignUpForm({required this.camera,super.key});
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
+  State<SignUpForm> createState() => _SignUpFormState(camera);
 }
 
 class _SignUpFormState extends State<SignUpForm> {
   bool enabled = true;
+  final CameraDescription camera;
+  _SignUpFormState(this.camera);
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +144,7 @@ class _SignUpFormState extends State<SignUpForm> {
               pressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => CompleteProfile(),
+                    builder: (context) => CompleteProfile(camera: camera,),
                   ),
                 );
               }),

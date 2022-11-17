@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/home/home_model.dart';
 import 'package:ecommerce/product_detail/product_detail.dart';
@@ -11,13 +12,17 @@ import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Search({required this.camera,super.key});
 
   @override
-  State<Search> createState() => _SearchState();
+  State<Search> createState() => _SearchState(camera);
 }
 
 class _SearchState extends State<Search> {
+  final CameraDescription camera;
+  _SearchState(this.camera);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,13 +32,13 @@ class _SearchState extends State<Search> {
         body: Layout(
           widget: Column(
             children: [
-              const SearchBar(),
+              SearchBar(camera: camera),
               const SizedBox(height: 20),
               (demoProducts.isNotEmpty)
                   ? 
                 // Expanded(
                 // child: ProductList(demoList: demoProducts,),)
-                Products(demoList: demoProducts)
+                Products(demoList: demoProducts,camera: camera,)
                   : const Text('No Products Found'),
             ],
           ),
@@ -70,8 +75,9 @@ class ProductList extends StatelessWidget {
 
 class Products extends StatelessWidget {
   final List<Product> demoList;
+  final CameraDescription camera;
 
-  const Products({Key? key, required this.demoList}) : super(key: key);
+  const Products({required this.camera, required this.demoList,super.key});
 
   Widget _buildProducts(BuildContext context, int index) {
     Size size = MediaQuery.of(context).size;
@@ -82,7 +88,7 @@ class Products extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ProductDetail()
+            builder: (_) => ProductDetail(camera: camera,)
           ),
         );
       },
@@ -106,7 +112,7 @@ class Products extends StatelessWidget {
           itemCount: demoList.length,
           itemBuilder: (context, index) {
             return Transform.translate(
-              offset: Offset(0.0, index.isOdd ? 30 : 0.0),
+              offset: Offset(0.0, index.isOdd ? 50 : 0.0),
               child: _buildProducts(context, index),
             );
           }),
