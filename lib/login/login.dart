@@ -1,17 +1,14 @@
 import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
-import 'package:ecommerce/signup/signup.dart';
-import 'package:ecommerce/widgets/button.dart';
-import 'package:ecommerce/widgets/suffix_icon.dart';
+import 'package:ecommerce/login/widgets/login_form.dart';
+import 'package:ecommerce/login/widgets/welcome_message.dart';
+import 'package:ecommerce/login/widgets/login_redirection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ecommerce/home/home.dart';
-
-import '../widgets/form_field.dart';
 
 class Login extends StatefulWidget {
   final CameraDescription camera;
-  const Login({required this.camera,super.key});
+  const Login({required this.camera, super.key});
 
   @override
   State<Login> createState() => _LoginState(camera);
@@ -38,9 +35,13 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 50),
                   WelcomeMessage(),
                   SizedBox(height: 50),
-                  LoginForm(camera: camera,),
+                  LoginForm(
+                    camera: camera,
+                  ),
                   SizedBox(height: 20),
-                  SignupRedirection(camera: camera,),
+                  LoginRedirection(
+                    camera: camera,
+                  ),
                 ],
               ),
             ),
@@ -51,144 +52,4 @@ class _LoginState extends State<Login> {
   }
 }
 
-class SignupRedirection extends StatelessWidget {
-  final CameraDescription camera;
-  const SignupRedirection({required this.camera,super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text("Don't have an account?"),
-        InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SignUp(camera: camera,)),
-              );
-            },
-            child: Text(" Signup.", style: TextStyle(color: PrimaryColor))),
-      ],
-    );
-  }
-}
-
-class WelcomeMessage extends StatelessWidget {
-  const WelcomeMessage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      "Welcome",
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 28,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class LoginForm extends StatefulWidget {
-  final CameraDescription camera;
-  const LoginForm({required this.camera,super.key});
-
-  @override
-  State<LoginForm> createState() => _LoginFormState(camera);
-}
-
-class _LoginFormState extends State<LoginForm> {
-
-  bool enabled = true;
-  final CameraDescription camera;
-  
-  _LoginFormState(this.camera);
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          CustomFormField(
-            labelText: "Email",
-            hintText: "Enter your email",
-            icon: SuffixIcon(icon: Icons.email),
-            enabled: enabled,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          CustomFormField(
-            labelText: "Password",
-            hintText: "Enter your password",
-            icon: SuffixIcon(icon: Icons.person),
-            enabled: enabled,
-          ),
-          SizedBox(height: 30),
-          CustomButton(
-              text: "Continue",
-              pressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Home(camera: camera,),
-                  ),
-                );
-                //state mgmt set enabled to tru; if enabled = true, button = save changes
-              }),
-          Text(
-            "or signup with",
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocialCard(
-                icon: 'assets/icons/google-icon.svg',
-                onPressed: () {},
-              ),
-              SocialCard(
-                icon: 'assets/icons/facebook-2.svg',
-                onPressed: () {},
-              ),
-              SocialCard(
-                icon: 'assets/icons/twitter.svg',
-                onPressed: () {},
-              ),
-            ],
-          ),
-          SizedBox(height: 20)
-        ],
-      ),
-    );
-  }
-}
-
-class SocialCard extends StatelessWidget {
-  SocialCard({Key? key, required this.icon, required this.onPressed})
-      : super(key: key);
-
-  final String icon;
-  VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            padding: EdgeInsets.all(12),
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              color: SecondaryColor,
-              shape: BoxShape.circle,
-            ),
-            child: Container(child: SvgPicture.asset(icon))),
-      ),
-      onTap: onPressed,
-    );
-  }
-}

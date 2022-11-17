@@ -1,7 +1,7 @@
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/my_profile/my_profile.dart';
 import 'package:ecommerce/storeManager/product/add_product.dart';
-import 'package:ecommerce/storeManager/storehome/store_home.dart';
+import 'package:ecommerce/storeManager/store_home/store_home.dart';
 import 'package:ecommerce/storeManager/widgets/bottom_nav_bar_store/bottom_nav_bar_store_model.dart';
 import 'package:ecommerce/wishlist/wishlist.dart';
 import 'package:flutter/material.dart';

@@ -13,7 +13,7 @@ import 'package:ecommerce/storeManager/orders/order_detail_store.dart';
 import 'package:ecommerce/storeManager/orders/orders.dart';
 import 'package:ecommerce/storeManager/product/add_product.dart';
 import 'package:ecommerce/storeManager/product/edit_product.dart';
-import 'package:ecommerce/storeManager/storehome/store_home.dart';
+import 'package:ecommerce/storeManager/store_home/store_home.dart';
 import 'package:ecommerce/storeManager/widgets/bottom_nav_bar_store/bottom_nav_bar_store_model.dart';
 import 'package:ecommerce/success/success.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home: Home(camera: camera),
+      home: StoreHome(),
     );
   }
 }

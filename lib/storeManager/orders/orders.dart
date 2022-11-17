@@ -4,7 +4,7 @@ import 'package:ecommerce/widgets/horizontal_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../order/order_model.dart';
-import '../storehome/store_home.dart';
+import '../store_home/store_home.dart';
 import 'order_detail_store.dart';
 
 class Orders extends StatelessWidget {

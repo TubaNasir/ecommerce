@@ -1,11 +1,11 @@
 import 'package:ecommerce/home/home_model.dart';
 import 'package:ecommerce/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/widgets/suffix_icon.dart';
 
 import '../../constants.dart';
 import '../../widgets/button.dart';
 import '../../widgets/form_field.dart';
-import '../../widgets/suffix_icon.dart';
 
 class AddProduct extends StatelessWidget {
   const AddProduct({Key? key}) : super(key: key);
