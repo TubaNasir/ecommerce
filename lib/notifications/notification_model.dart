@@ -1,5 +1,3 @@
-import 'dart:html';
-
 class Notification {
   final String title;
   final DateTime time;

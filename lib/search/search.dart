@@ -106,7 +106,7 @@ class Products extends StatelessWidget {
           itemCount: demoList.length,
           itemBuilder: (context, index) {
             return Transform.translate(
-              offset: Offset(0.0, index.isOdd ? 30 : 0.0),
+              offset: Offset(0.0, index.isOdd ? 50 : 0.0),
               child: _buildProducts(context, index),
             );
           }),

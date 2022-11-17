@@ -216,8 +216,8 @@ class CategoryCard extends StatelessWidget {
       child: InkWell(
         onTap: onPress,
         child: Container(
-          height: 75,
-          width: 75,
+          height: 80,
+          width: 80,
           child: Column(
             children: [
               Container(
