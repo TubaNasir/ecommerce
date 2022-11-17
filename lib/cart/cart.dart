@@ -103,7 +103,7 @@ class _CartState extends State<Cart> {
                 Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    elevation: 2,
+                    elevation: 5,
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -186,14 +186,16 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(bottom: 30.0),
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
+            elevation: 5,
             padding: EdgeInsets.zero,
             backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15))),
+                borderRadius: BorderRadius.circular(15))
+            ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -231,7 +233,7 @@ class _CartCardState extends State<CartCard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Flexible(
                                     child: Text(
@@ -242,7 +244,14 @@ class _CartCardState extends State<CartCard> {
                                     ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  constraints: BoxConstraints(),
+                                  onPressed: () {
+                                    setState(() {
+                                      cartList.remove(widget.product);
+                                    });
+                                    onCartChanged();
+                                  },
                                   icon: Icon(
                                     Icons.delete_outline,
                                     color: Colors.red.shade900,
@@ -275,6 +284,8 @@ class _CartCardState extends State<CartCard> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       IconButton(
+                                        padding: EdgeInsets.zero,
+                                        constraints: BoxConstraints(),
                                         onPressed: () {
                                           setState(() {
                                             widget.product.qty--;
@@ -291,22 +302,27 @@ class _CartCardState extends State<CartCard> {
                                           size: 20,
                                         ),
                                       ),
-                                      Text(
-                                        "${widget.product.qty}",
-                                        style: Theme.of(context).textTheme.titleMedium,
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                        child: Text(
+                                          "${widget.product.qty}",
+                                          style: Theme.of(context).textTheme.titleMedium,
+                                        ),
                                       ),
                                       IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            widget.product.qty++;
-                                          });
-                                          onCartChanged();
-                                        },
-                                        icon: const Icon(
-                                          Icons.add_circle,
-                                          color: Colors.black,
-                                          size: 20,),
-                                      ),
+                                          padding: EdgeInsets.zero,
+                                          constraints: BoxConstraints(),
+                                          onPressed: () {
+                                            setState(() {
+                                              widget.product.qty++;
+                                            });
+                                            onCartChanged();
+                                          },
+                                          icon: const Icon(
+                                            Icons.add_circle,
+                                            color: Colors.black,
+                                            size: 20,),
+                                        ),
                                     ]),
                               ],
                             )
