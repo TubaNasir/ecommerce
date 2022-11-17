@@ -126,19 +126,12 @@ class _CheckoutState extends State<Checkout> {
                                       children: [
                                         Text(
                                           'Total:',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.bold),
+                                          style: Theme.of(context).textTheme.bodyMedium,
+
                                         ),
                                         Text(
                                           'Rs 2700',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.copyWith(
-                                                  fontWeight: FontWeight.bold),
+                                          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
@@ -149,7 +142,6 @@ class _CheckoutState extends State<Checkout> {
                           ),
                         ),
                         SizedBox(height: 100),
-
                       ],
                     ),
                   ),

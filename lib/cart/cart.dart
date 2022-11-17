@@ -56,102 +56,101 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const CustomAppBar(
-          title: "Cart",
-          backButton: false,
-        ),
-        //backgroundColor: Colors.grey.shade200,
-        body: Stack(children: [
-          Layout(
-              widget: SingleChildScrollView(
-            child: Column(children: [
-              Column(
-                children: cartList
-                    .map((e) => CartCard(
-                        product: e,
-                        cartList: cartList,
-                        onCartChanged: () {
-                          setState(() {});
-                        }))
-                    .toList(),
-              ),
-              // ListView.builder(
-              //   shrinkWrap: true,
-              //   physics: NeverScrollableScrollPhysics(),
-              //   itemCount: cartList.length,
-              //   itemBuilder: (context, index) {
-              //     return Padding(
-              //       padding: const EdgeInsets.all(8.0),
-              //       //CartCards(productImage: cartList[index].image, cardTitle: cartList[index].title, cardSubtitle: cartList[index].price.toString(), press: (){}),
-              //       child: CartCard(
-              //         product: cartList[index],
-              //         cartList: cartList,
-              //         onCartChanged: () {
-              //           setState(() {});
-              //         },
-              //       ),
-              //     );
-              //   },
-              // ),
-              Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  elevation: 2,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: SecondaryColor,
+    return SafeArea(
+      child: Scaffold(
+          appBar: const CustomAppBar(
+            title: "Cart",
+            backButton: false,
+          ),
+          //backgroundColor: Colors.grey.shade200,
+          body: Stack(children: [
+            Layout(
+                widget: SingleChildScrollView(
+              child: Column(children: [
+                Column(
+                  children: cartList
+                      .map((e) => CartCard(
+                          product: e,
+                          cartList: cartList,
+                          onCartChanged: () {
+                            setState(() {});
+                          }))
+                      .toList(),
+                ),
+                // ListView.builder(
+                //   shrinkWrap: true,
+                //   physics: NeverScrollableScrollPhysics(),
+                //   itemCount: cartList.length,
+                //   itemBuilder: (context, index) {
+                //     return Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       //CartCards(productImage: cartList[index].image, cardTitle: cartList[index].title, cardSubtitle: cartList[index].price.toString(), press: (){}),
+                //       child: CartCard(
+                //         product: cartList[index],
+                //         cartList: cartList,
+                //         onCartChanged: () {
+                //           setState(() {});
+                //         },
+                //       ),
+                //     );
+                //   },
+                // ),
+                Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    elevation: 2,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: SecondaryColor,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Total: ',
-                                style: Theme.of(context).textTheme.titleMedium,
-                                textAlign: TextAlign.left,
-                              ),
-                              Text(
-                                'Rs 2700',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Total: ',
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  textAlign: TextAlign.left,
+                                ),
+                                Text(
+                                  'Rs 2700',
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
-              SizedBox(height: 20),
-              CustomButton(
-                text: 'Checkout',
-                pressed: () {
-                  Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const Checkout())
-                          );
-                },
-              ),
-              // ElevatedButton(
-              //   onPressed: () {
-              //     Navigator.of(context).push(
-              //       MaterialPageRoute(builder: (context) => const Checkout())
-              //     );
-              //   },
-              //   child: const Text("Continue")
-              // ),
-              SizedBox(height: 100),
-            ]),
-          )),
-          BottomNavBar()
-        ]));
+                    )),
+                SizedBox(height: 20),
+                CustomButton(
+                  text: 'Checkout',
+                  pressed: () {
+                    Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => const Checkout())
+                            );
+                  },
+                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //     Navigator.of(context).push(
+                //       MaterialPageRoute(builder: (context) => const Checkout())
+                //     );
+                //   },
+                //   child: const Text("Continue")
+                // ),
+                SizedBox(height: 100),
+              ]),
+            )),
+            BottomNavBar()
+          ])),
+    );
   }
 }
 
@@ -182,7 +181,7 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
@@ -214,79 +213,103 @@ class _CartCardState extends State<CartCard> {
               width: 20,
             ),
             Expanded(
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(0.0, 3.0, 3.0, 0.0),
-                              child: Text(
-                                widget.product.title,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Container(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                    child: Text(
+                                      widget.product.title,
+                                      style: Theme.of(context).textTheme.bodyMedium,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.delete_outline,
+                                    color: Colors.red.shade900,
+                                    size: 20,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          SizedBox(
-                            height: 3,
-                          ),
-                          Text("Store name",
-                              style: Theme.of(context).textTheme.bodySmall),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "Rs. ${widget.product.price}",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          )
-                        ],
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Row(
+                              children: [
+                                Text("Store name",
+                                    style: Theme.of(context).textTheme.bodySmall),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                              children: [
+                                Text(
+                                  "Rs. ${widget.product.price}",
+                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                                ),
+                                Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            widget.product.qty--;
+                                            //widget.actualProduct.qty--;
+                                            if (widget.product.qty < 1) {
+                                              cartList.remove(widget.product);
+                                            }
+                                          });
+                                          onCartChanged();
+                                        },
+                                        icon: const Icon(
+                                          Icons.remove_circle,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${widget.product.qty}",
+                                        style: Theme.of(context).textTheme.titleMedium,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            widget.product.qty++;
+                                          });
+                                          onCartChanged();
+                                        },
+                                        icon: const Icon(
+                                          Icons.add_circle,
+                                          color: Colors.black,
+                                          size: 20,),
+                                      ),
+                                    ]),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.product.qty--;
-                                //widget.actualProduct.qty--;
-                                if (widget.product.qty < 1) {
-                                  cartList.remove(widget.product);
-                                }
-                              });
-                              onCartChanged();
-                            },
-                            icon: const Icon(
-                              Icons.remove_circle,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Text(
-                            "${widget.product.qty}",
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.product.qty++;
-                              });
-                              onCartChanged();
-                            },
-                            icon: const Icon(Icons.add_circle,
-                                color: Colors.black),
-                          ),
-                        ])
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -359,67 +382,61 @@ class CartCards extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: ElevatedButton(
-        onPressed: press,
-        style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.zero,
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 88,
-              child: AspectRatio(
-                aspectRatio: 1.11,
-                child: Container(
-                    //width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    decoration: BoxDecoration(
-                      color: SecondaryColor,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0),
-                      ),
-                    ),
-                    child: Image.network(productImage)),
-              ),
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            Expanded(
+    return ElevatedButton(
+      onPressed: press,
+      style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.zero,
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15))),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 88,
+            child: AspectRatio(
+              aspectRatio: 1.11,
               child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0.0, 3.0, 3.0, 0.0),
-                        child: Text(
-                          cardTitle,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
+                  //width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  decoration: BoxDecoration(
+                    color: SecondaryColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10.0),
                     ),
-                    SizedBox(
-                      height: 10,
+                  ),
+                  child: Image.network(productImage)),
+            ),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: Text(
+                      cardTitle,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    Text(
-                      cardSubtitle,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    cardSubtitle,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  )
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

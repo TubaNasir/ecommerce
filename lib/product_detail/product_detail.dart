@@ -28,136 +28,135 @@ class _ProductDetailState extends State<ProductDetail> {
         body: Stack(
           clipBehavior: Clip.none,
           children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ClipPath(
-                      clipper : CurveClipper(),
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Center(
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.6,
-                            width: MediaQuery.of(context).size.width,
-                            decoration: const BoxDecoration(
-                              color: SecondaryColor,
+            Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        ClipPath(
+                          clipper : CurveClipper(),
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Center(
+                              child: Container(
+                                height: MediaQuery.of(context).size.height * 0.5,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: const BoxDecoration(
+                                  color: SecondaryColor,
+                                ),
+                                child: Image.network(product.image, fit: BoxFit.fitHeight),
+                              ),
                             ),
-                            child: Image.network(product.image, fit: BoxFit.fitHeight),
                           ),
                         ),
-                      ),
-                    ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.6,
-                      width: MediaQuery.of(context).size.width,
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                        child: Text(product.title,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold,),
-                                          maxLines:5,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 40,
-                                      height: 35,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black.withOpacity(0.1),
-                                        borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
-                                      ),
-                                      child: Center(
-                                        child: Icon(
-                                          Icons.favorite_border_rounded,
-                                          size: 30,
-                                          color: Colors.black.withOpacity(0.4),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 5),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                  child: Text('By Clothing Brand',
-                                    style: Theme.of(context).textTheme.caption?.copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Divider(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Container(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                child: Text('Rs. ${product.price}',
-                                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, color: PrimaryColor),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Divider(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Column(
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('Description',
-                                        style: Theme.of(context).textTheme.caption?.copyWith(fontWeight: FontWeight.bold),
+                                      Flexible(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                          child: Text(product.title,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold,),
+                                            maxLines:5,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 50,
+                                        height: 35,
+                                        decoration: BoxDecoration(
+                                          color: Colors.black.withOpacity(0.1),
+                                          borderRadius: BorderRadius.only(topLeft: Radius.circular(15.0), bottomLeft: Radius.circular(15.0)),
+                                        ),
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.favorite_border_rounded,
+                                            size: 30,
+                                            color: Colors.black.withOpacity(0.4),
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
                                   SizedBox(height: 5),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Expanded(
-                                        child: Text(product.description,
-                                          style: Theme.of(context).textTheme.labelLarge,
-                                        ),
-                                      ),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                    child: Text('By Clothing Brand',
+                                      style: Theme.of(context).textTheme.caption?.copyWith(fontWeight: FontWeight.bold),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-
-                          ],
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Divider(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Container(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                  child: Text('Rs. ${product.price}',
+                                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, color: PrimaryColor),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Divider(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text('Description',
+                                          style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold, color: TextColor2),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 5),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Expanded(
+                                          child: Text(product.description,
+                                            style: Theme.of(context).textTheme.bodyLarge,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 100),
+                            ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-
             Positioned(
               //left: -8.0,
               bottom: 0,
@@ -193,7 +192,8 @@ class _ProductDetailState extends State<ProductDetail> {
                         children: [
                           Row(
                               mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 IconButton(
                                   onPressed: () {
@@ -211,11 +211,12 @@ class _ProductDetailState extends State<ProductDetail> {
                                   icon: const Icon(
                                     Icons.remove_circle,
                                     color: Colors.black,
+                                    size: 30,
                                   ),
                                 ),
                                 Text(
-                                  "${product.quantity}",
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                  " ${product.quantity} " ,
+                                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                                 ),
                                 IconButton(
                                   onPressed: () {
@@ -224,8 +225,11 @@ class _ProductDetailState extends State<ProductDetail> {
                                     });
                                     setState(() {});
                                   },
-                                  icon: const Icon(Icons.add_circle,
-                                      color: Colors.black),
+                                  icon: const Icon(
+                                      Icons.add_circle,
+                                      color: Colors.black,
+                                      size: 30,
+                                  ),
                                 ),
                               ]),
                         ],
@@ -254,7 +258,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Checkout',
+                              'Add to Cart',
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
                             ),

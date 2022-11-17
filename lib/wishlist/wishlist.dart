@@ -76,7 +76,7 @@ class WishListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: ElevatedButton(
         onPressed: press,
         style: ElevatedButton.styleFrom(
@@ -108,18 +108,18 @@ class WishListCard extends StatelessWidget {
               width: 20,
             ),
             Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(0.0, 3.0, 3.0, 0.0),
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Container(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
                             child: Text(
                               title,
                               style: Theme.of(context).textTheme.bodyMedium,
@@ -127,25 +127,22 @@ class WishListCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: icon,
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Text("Store name", style: Theme.of(context).textTheme.bodySmall),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      price,
-                      style: Theme.of(context).textTheme.titleMedium,
-                    )
-                  ],
+                          icon
+                        ],
+                      ),
+                      SizedBox(
+                        height: 3,
+                      ),
+                      Text("Store name", style: Theme.of(context).textTheme.bodySmall),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        price,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

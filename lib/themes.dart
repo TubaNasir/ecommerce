@@ -17,7 +17,7 @@ TextTheme textTheme() {
       titleMedium: TextStyle(color: TextColor1),//
       bodyMedium: TextStyle(color: TextColor1),//for price for now// for price for now
       bodySmall: TextStyle(color: TextColor2),
-      bodyLarge: TextStyle(color: TextColor2),
+      bodyLarge: TextStyle(color: TextColor1),
   );
 }
 
