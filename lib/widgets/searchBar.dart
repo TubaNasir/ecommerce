@@ -1,11 +1,14 @@
+import 'package:camera/camera.dart';
+import 'package:ecommerce/camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchBar extends StatelessWidget {
+  final CameraDescription camera;
   const SearchBar({
-    Key? key,
-  }) : super(key: key);
+    required this.camera, super.key
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,14 @@ class SearchBar extends StatelessWidget {
                     contentPadding: EdgeInsets.symmetric(horizontal: 90, vertical: 9)),
               ),
           ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt,color: PrimaryColor,))
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder:(context) => CameraScreen(camera: camera))
+              );
+            }, 
+            icon: Icon(Icons.camera_alt,color: PrimaryColor,)
+          )
         ],
       ),
     );

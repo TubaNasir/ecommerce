@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:camera/camera.dart';
 import 'package:ecommerce/checkout/checkout.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:ecommerce/widgets/button.dart';
@@ -10,14 +11,18 @@ import '../widgets/layout.dart';
 import 'product_model.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Cart({required this.camera,super.key});
 
   @override
-  State<Cart> createState() => _CartState();
+  State<Cart> createState() => _CartState(camera);
 }
 
 class _CartState extends State<Cart> {
   late List<Product1> cartList;
+  final CameraDescription camera;
+  
+  _CartState(this.camera);
 
   @override
   void initState() {
@@ -135,7 +140,7 @@ class _CartState extends State<Cart> {
                 text: 'Checkout',
                 pressed: () {
                   Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const Checkout())
+                            MaterialPageRoute(builder: (context) => Checkout(camera: camera,))
                           );
                 },
               ),
@@ -150,7 +155,7 @@ class _CartState extends State<Cart> {
               SizedBox(height: 100),
             ]),
           )),
-          BottomNavBar()
+          BottomNavBar(camera: camera,)
         ]));
   }
 }

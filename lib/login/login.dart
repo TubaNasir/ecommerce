@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/constants.dart';
 import 'package:ecommerce/signup/signup.dart';
 import 'package:ecommerce/widgets/button.dart';
@@ -9,16 +10,19 @@ import 'package:ecommerce/home/home.dart';
 import '../widgets/form_field.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const Login({required this.camera,super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Login> createState() => _LoginState(camera);
 }
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   String? email;
   String? password;
+  final CameraDescription camera;
+  _LoginState(this.camera);
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +38,9 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 50),
                   WelcomeMessage(),
                   SizedBox(height: 50),
-                  LoginForm(),
+                  LoginForm(camera: camera,),
                   SizedBox(height: 20),
-                  SignupRedirection(),
+                  SignupRedirection(camera: camera,),
                 ],
               ),
             ),
@@ -48,9 +52,8 @@ class _LoginState extends State<Login> {
 }
 
 class SignupRedirection extends StatelessWidget {
-  const SignupRedirection({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const SignupRedirection({required this.camera,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +64,7 @@ class SignupRedirection extends StatelessWidget {
         InkWell(
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SignUp()),
+                MaterialPageRoute(builder: (context) => SignUp(camera: camera,)),
               );
             },
             child: Text(" Signup.", style: TextStyle(color: PrimaryColor))),
@@ -89,17 +92,19 @@ class WelcomeMessage extends StatelessWidget {
 }
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({
-    Key? key,
-  }) : super(key: key);
+  final CameraDescription camera;
+  const LoginForm({required this.camera,super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<LoginForm> createState() => _LoginFormState(camera);
 }
 
 class _LoginFormState extends State<LoginForm> {
 
   bool enabled = true;
+  final CameraDescription camera;
+  
+  _LoginFormState(this.camera);
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -126,7 +131,7 @@ class _LoginFormState extends State<LoginForm> {
               pressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Home(),
+                    builder: (context) => Home(camera: camera,),
                   ),
                 );
                 //state mgmt set enabled to tru; if enabled = true, button = save changes

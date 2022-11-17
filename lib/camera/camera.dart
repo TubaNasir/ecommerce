@@ -3,22 +3,24 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatefulWidget {
-  const SecondScreen({super.key, required this.camera});
+import '../search/search.dart';
+
+class CameraScreen extends StatefulWidget {
+  const CameraScreen({super.key, required this.camera});
 
   final CameraDescription camera;
   @override
   // ignore: no_logic_in_create_state
-  State<SecondScreen> createState() => _SecondScreenState(camera);
+  State<CameraScreen> createState() => _CameraScreenState(camera);
 }
 
-class _SecondScreenState extends State<SecondScreen> {
+class _CameraScreenState extends State<CameraScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   
   final CameraDescription camera;
   
-  _SecondScreenState(this.camera);
+  _CameraScreenState(this.camera);
 
   @override
   void initState() {
@@ -47,7 +49,7 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take front Pose')),
+      appBar: AppBar(title: const Text('Image Search')),
       // You must wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner until the
       // controller has finished initializing.
@@ -80,14 +82,15 @@ class _SecondScreenState extends State<SecondScreen> {
 
             // If the picture was taken, display it on a new screen.
             await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DisplayPictureScreen(
-                  // Pass the automatically generated path to
-                  // the DisplayPictureScreen widget.
-                  imagePath: image.path,
-                  camera: camera,
-                ),
-              ),
+              // MaterialPageRoute(
+              //   builder: (context) => DisplayPictureScreen(
+              //     // Pass the automatically generated path to
+              //     // the DisplayPictureScreen widget.
+              //     imagePath: image.path,
+              //     camera: camera,
+              //   ),
+              // ),
+              MaterialPageRoute(builder: (_) => Search(camera:camera))
             );
           } catch (e) {
             // If an error occurs, log the error to the console.

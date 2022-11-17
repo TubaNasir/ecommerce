@@ -1,10 +1,12 @@
+import 'package:camera/camera.dart';
 import 'package:ecommerce/home/home.dart';
 import 'package:ecommerce/widgets/bottom_nav_bar/bottom_nav_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MyIconButton extends StatelessWidget {
-  const MyIconButton({Key? key}) : super(key: key);
+  final CameraDescription camera;
+  const MyIconButton({required this.camera,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MyIconButton extends StatelessWidget {
         context.read<NavBar>().setPage('home');
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => Home(camera: camera,),
           ),
         );
       },
