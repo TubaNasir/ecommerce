@@ -36,6 +36,9 @@ class _WishlistState extends State<Wishlist> {
                 widget: SingleChildScrollView(
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 10,
+                  ),
                   Column(
                     children: demoProducts
                         .map((e) => WishListCard(
@@ -45,6 +48,7 @@ class _WishlistState extends State<Wishlist> {
                               icon: Icon(
                                 Icons.favorite,
                                 color: (fav == true ? Colors.red : Colors.grey),
+                                size: 20,
                               ),
                               press: () {}, storeName: 'lala',
                             ))
@@ -82,10 +86,11 @@ class WishListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: 30.0),
       child: ElevatedButton(
         onPressed: press,
         style: ElevatedButton.styleFrom(
+            elevation: 5,
             padding: EdgeInsets.zero,
             backgroundColor: Colors.white,
             shape: RoundedRectangleBorder(

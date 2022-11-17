@@ -69,6 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 ),
                                 child: Icon(
                                     Icons.notifications_active_outlined),
+                                    
                               ),
                               if (numOfitem != 0)
                                 Positioned(
