@@ -24,16 +24,18 @@ class _MyProfileState extends State<MyProfile> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: 'My Profile', backButton: false,
-      ),
-      body: Stack(
-        children: [
-          Layout(widget: AccountBody()),
-          //AccountBody(),
-          BottomNavBar(camera: camera,),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(
+          title: 'My Profile', backButton: false,
+        ),
+        body: Stack(
+          children: [
+            Layout(widget: AccountBody()),
+            //AccountBody(),
+            BottomNavBar(camera: camera,),
+          ],
+        ),
       ),
     );
   }

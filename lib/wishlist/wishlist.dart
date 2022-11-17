@@ -24,40 +24,41 @@ class _WishlistState extends State<Wishlist> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: "Wishlist",
-        backButton: false,
-      ),
-      body: Stack(
-        children: [
-          Layout(
-              widget: SingleChildScrollView(
-            child: Column(
-              children: [
-                Column(
-                  children: demoProducts
-                      .map((e) => WishListCard(
-                            productImage: e.image,
-                            title: e.title,
-                            price: "Rs. " + e.price.toString(),
-                            icon: Icon(
-                              Icons.favorite,
-                              color: (fav == true ? Colors.red : Colors.grey),
-                            ),
-                            press: () {}, storeName: 'lala',
-                          ))
-                      .toList(),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-              ],
-            ),
-          )),
-          BottomNavBar(camera: camera,),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: CustomAppBar(
+          title: "Wishlist",
+          backButton: false,
+        ),
+        body: Stack(
+          children: [
+            Layout(
+                widget: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Column(
+                    children: demoProducts
+                        .map((e) => WishListCard(
+                              productImage: e.image,
+                              title: e.title,
+                              price: "Rs. " + e.price.toString(),
+                              icon: Icon(
+                                Icons.favorite,
+                                color: (fav == true ? Colors.red : Colors.grey),
+                              ),
+                              press: () {}, storeName: 'lala',
+                            ))
+                        .toList(),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
+            )),
+            BottomNavBar(camera: camera,),
+          ],
+        ),
       ),
     );
   }

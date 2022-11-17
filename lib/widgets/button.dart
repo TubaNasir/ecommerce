@@ -7,7 +7,7 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.pressed,
   }) : super(key: key);
-  final String? text;
+  final String text;
   final VoidCallback pressed;
 
   @override
@@ -27,12 +27,11 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(80.0)),
           ),
           child: Container(
-            //constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0), // min sizes for Material buttons
             alignment: Alignment.center,
             child: Text(
-              text!,
+              text,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),
